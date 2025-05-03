@@ -2,59 +2,84 @@ package com.example.bloodlinkbackend.Model;
 
 import jakarta.persistence.*;
 
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-
 @Entity
+@Table(name = "registration")
 public class Registration {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long reg_id;
 
-    @NotBlank(message = "Name is required")
     private String name;
-
-    @NotBlank(message = "Email is required")
-    @Email(message = "Invalid email")
-    @Column(unique = true)
     private String email;
-
-    @NotBlank(message = "Password is required")
+    private String mobile_num;
     private String password;
 
+    @Enumerated(EnumType.STRING)
+    private Role role;
 
-
-    public Long getId() {
-        return id;
+    public enum Role {
+        NURSE,
+        DOCTOR,
+        LABTECH
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Registration() {}
+
+    public Registration(String name, String email, String mobile_num, String password, Role role) {
+        this.name = name;
+        this.email = email;
+        this.mobile_num = mobile_num;
+        this.password = password;
+        this.role = role;
     }
 
-    public @NotBlank(message = "Name is required") String getName() {
+    // Getters and setters
+    public Long getReg_id() {
+        return reg_id;
+    }
+
+    public void setReg_id(Long reg_id) {
+        this.reg_id = reg_id;
+    }
+
+    public String getName() {
         return name;
     }
 
-    public void setName(@NotBlank(message = "Name is required") String name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public @NotBlank(message = "Email is required") @Email(message = "Invalid email") String getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(@NotBlank(message = "Email is required") @Email(message = "Invalid email") String email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public @NotBlank(message = "Password is required") String getPassword() {
+    public String getMobile_num() {
+        return mobile_num;
+    }
+
+    public void setMobile_num(String mobile_num) {
+        this.mobile_num = mobile_num;
+    }
+
+    public String getPassword() {
         return password;
     }
 
-    public void setPassword(@NotBlank(message = "Password is required") String password) {
+    public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
