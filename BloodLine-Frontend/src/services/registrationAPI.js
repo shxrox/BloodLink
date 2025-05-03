@@ -12,8 +12,8 @@ export const getRegistrationById = async (id) => {
     return response.data;
 };
 
-export const addRegistration = async (registration) => {
-    const response = await axios.post(url, registration);
+export const addRegistration = async (registrationData) => {
+    const response = await axios.post(baseUrl, registrationData);
     return response.data;
 };
 
@@ -26,3 +26,6 @@ export const deleteRegistration = async (id) => {
     const response = await axios.delete(`${url}/${id}`);
     return response.data;
 };
+
+
+
