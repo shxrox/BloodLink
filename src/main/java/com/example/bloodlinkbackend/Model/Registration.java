@@ -6,7 +6,9 @@ import jakarta.persistence.*;
 @Table(name = "registration")
 public class Registration {
 
+
     @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long reg_id;
 
@@ -82,4 +84,5 @@ public class Registration {
     public void setRole(Role role) {
         this.role = role;
     }
+
 }
