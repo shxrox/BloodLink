@@ -1,13 +1,11 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Register from './component/Register'; // Assuming the Register component is in src/component/
+import { Routes, Route } from 'react-router-dom';
+import RegistrationForm from './component/RegistrationForm';
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/register" element={<Register />} /> {/* Route for /register */}
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<RegistrationForm />} />
+    </Routes>
   );
 }
 
