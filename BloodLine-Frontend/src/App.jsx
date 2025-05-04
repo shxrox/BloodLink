@@ -4,7 +4,7 @@ import RegistrationForm from './component/RegistrationForm';
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<RegistrationForm />} />
+      <Route path="/registration" element={<RegistrationForm />} />
     </Routes>
   );
 }
