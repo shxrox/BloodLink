@@ -13,7 +13,7 @@ export const getRegistrationById = async (id) => {
 };
 
 export const addRegistration = async (registrationData) => {
-    const response = await axios.post(baseUrl, registrationData);
+    const response = await axios.post(url, registrationData); // fixed here
     return response.data;
 };
 
@@ -26,6 +26,3 @@ export const deleteRegistration = async (id) => {
     const response = await axios.delete(`${url}/${id}`);
     return response.data;
 };
-
-
-
