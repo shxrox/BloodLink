@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { addRegistration } from "../services/registrationAPI";
-import '../style/RegistrationForm.css';
+import { addRegistration } from "../services/RegistrationAPI";
+import '../style/registrationForm.css';
 
 
 
