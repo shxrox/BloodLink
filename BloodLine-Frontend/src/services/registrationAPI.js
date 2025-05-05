@@ -26,3 +26,4 @@ export const deleteRegistration = async (id) => {
     const response = await axios.delete(`${url}/${id}`);
     return response.data;
 };
+
