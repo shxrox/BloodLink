@@ -4,7 +4,8 @@ import LoginForm from './component/Login';
 import Nurse from './component/dashboard/Nurse/nurse';
 import Doctor from './component/dashboard/doctor/doctor';
 import Lab from './component/dashboard/lab/lab';
-
+import Patientregister from "./component/dashboard/nurse/Patientregister";
+import Patientdetails from "./component/dashboard/doctor/Patientdetails";
 function App() {
   return (
     <Routes>
@@ -13,7 +14,8 @@ function App() {
       <Route path="/dashboard/nurse" element={<Nurse />} />
       <Route path="/dashboard/doctor" element={<Doctor />} />
       <Route path="/dashboard/lab" element={<Lab />} />
-
+      <Route path="/dashboard/nurse/patient-register" element={<Patientregister />} />
+      <Route path="/dashboard/doctor/patient-details" element={<Patientdetails />} />
     </Routes>
   );
 }
