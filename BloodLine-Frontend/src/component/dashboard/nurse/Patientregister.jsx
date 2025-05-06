@@ -7,6 +7,7 @@ import Navbar from "./NurseNavbar";
 const PatientManagement = () => {
   const [patients, setPatients] = useState([]);
   const [editingPatientId, setEditingPatientId] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
 
   // Fetch all patients
   useEffect(() => {
@@ -320,7 +321,6 @@ const handleAddToQueue = (patient) => {
 
         <button type="submit">{editingPatientId ? 'Update Patient' : 'Add Patient'}</button>
       </form>
-
       <h2>Patient List</h2>
       <table border="1" style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
   <thead>
