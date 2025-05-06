@@ -6,6 +6,10 @@ import Doctor from './component/dashboard/doctor/doctor';
 import Lab from './component/dashboard/lab/lab';
 import Patientregister from "./component/dashboard/nurse/Patientregister";
 import Patientdetails from "./component/dashboard/doctor/Patientdetails";
+import Patientqueue from "./component/dashboard/nurse/PatientQueue";
+import Home from './component/Home';
+
+
 function App() {
   return (
     <Routes>
@@ -16,6 +20,8 @@ function App() {
       <Route path="/dashboard/lab" element={<Lab />} />
       <Route path="/dashboard/nurse/patient-register" element={<Patientregister />} />
       <Route path="/dashboard/doctor/patient-details" element={<Patientdetails />} />
+      <Route path="/dashboard/nurse/patient-queue" element={<Patientqueue />} />
+      <Route path="/" element={<Home />} />
     </Routes>
   );
 }
