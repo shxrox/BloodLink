@@ -7,6 +7,7 @@ const NurseNavbar = () => {
       <div>
         <Link to="/dashboard/nurse" style={styles.link}>Home</Link>
         <Link to="/dashboard/nurse/patient-register" style={styles.link}>patient Register</Link>
+        <Link to="/dashboard/nurse/patient-queue" style={styles.link}>patient queue</Link>
         <Link to="/login" style={styles.link}>Logout</Link>
       </div>
     </nav>
