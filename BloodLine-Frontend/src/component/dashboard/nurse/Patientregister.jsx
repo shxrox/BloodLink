@@ -109,6 +109,21 @@ const PatientManagement = () => {
     }
   };
 
+const handleAddToQueue = (patient) => {
+  const token = Math.floor(1000 + Math.random() * 9000); // 4-digit token
+  const newEntry = { name: patient.fullName, token };
+
+  // Get existing queue or initialize
+  const existingQueue = JSON.parse(localStorage.getItem("patientQueue")) || [];
+
+  // Add new entry and save back
+  existingQueue.push(newEntry);
+  localStorage.setItem("patientQueue", JSON.stringify(existingQueue));
+
+  alert(`Added to queue!\nName: ${patient.fullName}\nToken: ${token}`);
+};
+
+
   return (
     <div>
       <Navbar />
@@ -358,6 +373,13 @@ const PatientManagement = () => {
           >
             Delete
           </button>
+          <button
+  onClick={() => handleAddToQueue(patient)}
+  style={{ marginLeft: '8px', color: 'green' }}
+>
+  Add to Queue
+</button>
+
         </td>
       </tr>
     ))}
