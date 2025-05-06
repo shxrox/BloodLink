@@ -8,6 +8,7 @@ import Patientregister from "./component/dashboard/nurse/Patientregister";
 import Patientdetails from "./component/dashboard/doctor/Patientdetails";
 import Patientqueue from "./component/dashboard/nurse/PatientQueue";
 import Home from './component/Home';
+import Patientcheking from "./component/dashboard/doctor/Patientcheking";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Route path="/dashboard/lab" element={<Lab />} />
       <Route path="/dashboard/nurse/patient-register" element={<Patientregister />} />
       <Route path="/dashboard/doctor/patient-details" element={<Patientdetails />} />
+      <Route path="/dashboard/doctor/petient-cheking" element={<Patientcheking />} />
       <Route path="/dashboard/nurse/patient-queue" element={<Patientqueue />} />
       <Route path="/" element={<Home />} />
     </Routes>
