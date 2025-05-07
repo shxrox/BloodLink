@@ -7,6 +7,8 @@ const Nurse = () => {
       <Navbar />
       <h1>Welcome Lab Tech</h1>
       <p>You have successfully logged in.</p>
+      <p>You have successfully logged in.</p>
+
     </div>
   );
 };
