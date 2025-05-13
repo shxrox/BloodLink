@@ -8,7 +8,7 @@ import Patientregister from "./component/dashboard/nurse/Patientregister";
 import Patientdetails from "./component/dashboard/doctor/Patientdetails";
 import Patientqueue from "./component/dashboard/nurse/PatientQueue";
 import Home from './component/Home';
-import Patientcheking from "./component/dashboard/doctor/Patientcheking";
+import Patientcheking from "./component/dashboard/doctor/LabDetailed";
 import AbbLab from "./component/dashboard/nurse/AddLabReport";
 import LabInfo from './component/dashboard/lab/LabSubmitInfo';
 import Labdetails from './component/dashboard/lab/Labdetails';
