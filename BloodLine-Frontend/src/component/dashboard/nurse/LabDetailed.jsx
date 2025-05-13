@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Navbar from "../lab/LabNavbar";
+import Navbar from "./NurseNavbar";
 import { getAllLabReports } from "../../../services/labReportService";
 
 const Labdetails = () => {
