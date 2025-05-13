@@ -13,6 +13,7 @@ import AbbLab from "./component/dashboard/nurse/AddLabReport";
 import LabInfo from './component/dashboard/lab/LabSubmitInfo';
 import Labdetails from './component/dashboard/lab/Labdetails';
 import NurseLabDatils from './component/dashboard/nurse/LabDetailed';
+import PetientDescription from './component/dashboard/doctor/DoctorDescription';
 
 
 
@@ -33,6 +34,7 @@ function App() {
       <Route path="/dashboard/lab/lab-details" element={<LabInfo />} />
       <Route path="/dashboard/lab/lab-cheking" element={<Labdetails />} />
       <Route path="/dashboard/nurse/lab-cheking" element={<NurseLabDatils />} />
+      <Route path="/dashboard/doctor/petient-description" element={<PetientDescription />}/>
 
 
       <Route path="/" element={<Home />} />
