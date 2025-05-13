@@ -11,7 +11,8 @@ import Home from './component/Home';
 import Patientcheking from "./component/dashboard/doctor/Patientcheking";
 import AbbLab from "./component/dashboard/nurse/AddLabReport";
 import LabInfo from './component/dashboard/lab/LabSubmitInfo';
-import Labdetails from './component/dashboard/lab/Labdetails'
+import Labdetails from './component/dashboard/lab/Labdetails';
+import NurseLabDatils from './component/dashboard/nurse/LabDetailed';
 
 
 
@@ -31,6 +32,8 @@ function App() {
       <Route path="/dashboard/nurse/patient-queue" element={<Patientqueue />} />
       <Route path="/dashboard/lab/lab-details" element={<LabInfo />} />
       <Route path="/dashboard/lab/lab-cheking" element={<Labdetails />} />
+      <Route path="/dashboard/nurse/lab-cheking" element={<NurseLabDatils />} />
+
 
       <Route path="/" element={<Home />} />
     </Routes>
