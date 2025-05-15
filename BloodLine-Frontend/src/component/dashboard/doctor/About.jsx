@@ -1,5 +1,7 @@
 import React from "react";
 import Navbar from './DoctorNavbar';
+import Footer from '../../Footer';
+
 
 const AboutUs = () => {
   return (
@@ -51,9 +53,7 @@ const AboutUs = () => {
         </p>
       </section>
 
-      <section style={{ textAlign: "center", marginTop: "50px", color: "#555", fontSize: "0.9rem" }}>
-        <p>© 2025 BloodLink. All rights reserved.</p>
-      </section>
+       <Footer />
     </div>
   );
 };

@@ -3,6 +3,8 @@ import axios from "axios";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import Navbar from "./NurseNavbar"; 
+import Footer from '../../Footer';
+
 
 
 const AddLabReport = () => {
@@ -240,6 +242,7 @@ const AddLabReport = () => {
           </table>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

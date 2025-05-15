@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from './LabNavbar';
+import Footer from '../../Footer';
 
 const AboutUs = () => {
   return (
@@ -50,10 +51,7 @@ const AboutUs = () => {
           We envision a healthcare ecosystem where technology empowers medical staff to deliver faster, more accurate, and compassionate care. By connecting blood donors, patients, and healthcare workers through BloodLink, we aim to save lives and improve health outcomes in communities around the world.
         </p>
       </section>
-
-      <section style={{ textAlign: "center", marginTop: "50px", color: "#555", fontSize: "0.9rem" }}>
-        <p>© 2025 BloodLink. All rights reserved.</p>
-      </section>
+      <Footer />
     </div>
   );
 };

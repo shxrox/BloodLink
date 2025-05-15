@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import DoctorDescriptionService from '../../../services/doctorDescriptionService';
 import axios from 'axios';
 import Navbar from './DoctorNavbar';
+import Footer from '../../Footer';
+
 
 const DoctorDescription = () => {
   const [descriptions, setDescriptions] = useState([]);
@@ -155,6 +157,7 @@ const DoctorDescription = () => {
           ))}
         </tbody>
       </table>
+      <Footer />
     </div>
   );
 };

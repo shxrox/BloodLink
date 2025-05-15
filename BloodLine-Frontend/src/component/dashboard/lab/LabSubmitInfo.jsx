@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "./LabNavbar";
+import Footer from '../../Footer';
+
 
 const LabSubmitInfo = () => {
   const [labReports, setLabReports] = useState([]);
@@ -50,6 +52,7 @@ const LabSubmitInfo = () => {
           </table>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

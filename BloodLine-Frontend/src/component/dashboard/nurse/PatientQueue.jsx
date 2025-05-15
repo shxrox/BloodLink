@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './NurseNavbar';
+import Footer from '../../Footer';
+
 
 const PatientQueue = () => {
   const [queue, setQueue] = useState([]);
@@ -64,6 +66,7 @@ const PatientQueue = () => {
           <button onClick={handleNext} style={{ marginTop: '20px', padding: '10px 20px' }}>Next</button>
         </>
       )}
+      <Footer />
     </div>
   );
 };

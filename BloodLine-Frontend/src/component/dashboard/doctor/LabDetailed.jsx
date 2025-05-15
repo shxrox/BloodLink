@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../doctor/DoctorNavbar";
 import { getAllLabReports } from "../../../services/labReportService";
+import Footer from '../../Footer';
 
 const Labdetails = () => {
   const [labReports, setLabReports] = useState([]);
@@ -108,6 +109,7 @@ const Labdetails = () => {
           </table>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

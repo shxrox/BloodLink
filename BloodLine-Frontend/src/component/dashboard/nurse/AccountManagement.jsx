@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { getRegistrations } from "../../../services/RegistrationAPI";
 import Navbar from './NurseNavbar';
+import Footer from '../../Footer';
+
 
 const AccountManagement = () => {
   const [accounts, setAccounts] = useState([]);
@@ -58,6 +60,7 @@ const AccountManagement = () => {
       {renderTable("Doctors", doctors)}
       {renderTable("Nurses", nurses)}
       {renderTable("Lab Technicians", labtechs)}
+    <Footer />
     </div>
   );
 };

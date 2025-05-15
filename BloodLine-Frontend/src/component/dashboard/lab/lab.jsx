@@ -5,6 +5,8 @@ import {
   PieChart, Pie, Cell, Tooltip, Legend,
   LineChart, Line, CartesianGrid, XAxis, YAxis
 } from "recharts";
+import Footer from '../../Footer';
+
 
 const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
@@ -98,6 +100,7 @@ const Nurse = () => {
           <Line type="monotone" dataKey="count" stroke="#8884d8" />
         </LineChart>
       </div>
+      <Footer />
     </div>
   );
 };

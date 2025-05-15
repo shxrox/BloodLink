@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./LabNavbar";
+import Footer from '../../Footer';
+
 import {
   getAllLabReports,
   getDetailedReportByReportId,
@@ -215,6 +217,7 @@ const Labdetails = () => {
           </table>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

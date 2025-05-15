@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { getPatients, deletePatient } from '../../../services/patientsregAPI';
 import Navbar from "./DoctorNavbar";
+import Footer from '../../Footer';
+
 
 const PatientDetails = () => {
   const [patients, setPatients] = useState([]);
@@ -106,6 +108,7 @@ const PatientDetails = () => {
           ))}
         </tbody>
       </table>
+      <Footer />
     </div>
   );
 };

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../nurse/NurseNavbar";
+import Footer from '../../Footer';
+
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
   PieChart, Pie, Cell,
@@ -129,6 +131,7 @@ const Nurse = () => {
           <Bar dataKey="count" fill="#82ca9d" name="Number of Users" />
         </BarChart>
       </ResponsiveContainer>
+      <Footer/>
     </div>
   );
 };

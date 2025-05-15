@@ -4,6 +4,7 @@ import { getRegistrations } from "../../../services/RegistrationAPI";
 import MedicineService from "../../../services/medicineService";
 import DoctorDescriptionService from "../../../services/doctorDescriptionService";
 import { PieChart, Pie, Cell, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, LineChart, Line, CartesianGrid } from "recharts";
+import Footer from '../../Footer';
 
 const doctor = () => {
   const [accounts, setAccounts] = useState([]);
@@ -173,6 +174,7 @@ const doctor = () => {
           </PieChart>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
