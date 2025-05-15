@@ -1,12 +1,134 @@
-import React from "react";
-import Navbar from "../nurse/NurseNavbar"; 
+import React, { useEffect, useState } from "react";
+import Navbar from "../nurse/NurseNavbar";
+import {
+  BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
+  PieChart, Pie, Cell,
+  LineChart, Line,
+} from 'recharts';
+
+const COLORS = ['#0088FE', '#FF8042'];
 
 const Nurse = () => {
+  const [patientQueue, setPatientQueue] = useState([]);
+  const [labReports, setLabReports] = useState([]);
+  const [accounts, setAccounts] = useState([]);
+
+  // Fetch patient queue from localStorage or API
+  useEffect(() => {
+    const savedQueue = JSON.parse(localStorage.getItem("patientQueue")) || [];
+    setPatientQueue(savedQueue);
+  }, []);
+
+  // Fetch lab reports from backend
+  useEffect(() => {
+    fetch("http://localhost:8080/api/labreports/all")
+      .then(res => res.json())
+      .then(data => setLabReports(data))
+      .catch(console.error);
+  }, []);
+
+  // Fetch accounts (doctors, nurses, lab techs)
+  useEffect(() => {
+    fetch("http://localhost:8080/api/registrations/all")
+      .then(res => res.json())
+      .then(data => setAccounts(data))
+      .catch(console.error);
+  }, []);
+
+  // ===== Patient Queue Chart Data =====
+  // For demo: Count waiting = current queue length, served = total - queue length (you can adapt based on real data)
+  // You can extend this with history or API for served counts per day
+  const waitingCount = patientQueue.length;
+
+  // ===== Lab Reports Pie Data =====
+  const sentCount = labReports.filter(r => r.sentToLab).length;
+  const notSentCount = labReports.length - sentCount;
+  const labReportsPieData = [
+    { name: "Sent to Lab", value: sentCount },
+    { name: "Not Sent", value: notSentCount },
+  ];
+
+  // ===== Lab Reports Line Chart Data =====
+  // Group lab reports by reportDate and count
+  const reportsByDateMap = {};
+  labReports.forEach(report => {
+    const date = report.reportDate || "Unknown";
+    reportsByDateMap[date] = (reportsByDateMap[date] || 0) + 1;
+  });
+  // Convert to array sorted by date
+  const labReportsLineData = Object.entries(reportsByDateMap)
+    .map(([date, count]) => ({ date, reports: count }))
+    .sort((a, b) => new Date(a.date) - new Date(b.date));
+
+  // ===== Account Summary Data =====
+  const roleCounts = accounts.reduce(
+    (acc, user) => {
+      const role = user.role?.toLowerCase();
+      if (role === "doctor") acc.doctors++;
+      else if (role === "nurse") acc.nurses++;
+      else if (role === "labtech") acc.labtechs++;
+      return acc;
+    },
+    { doctors: 0, nurses: 0, labtechs: 0 }
+  );
+  const accountSummaryData = [
+    { role: "Doctors", count: roleCounts.doctors },
+    { role: "Nurses", count: roleCounts.nurses },
+    { role: "Lab Techs", count: roleCounts.labtechs },
+  ];
+
   return (
-    <div>
+    <div style={{ padding: "20px" }}>
       <Navbar />
       <h1>Welcome Nurse</h1>
       <p>You have successfully logged in.</p>
+
+      <h2>Patient Queue (Current Waiting)</h2>
+      <p>Number of patients waiting: <strong>{waitingCount}</strong></p>
+
+      <h2>Lab Reports Sent to Lab vs Not Sent</h2>
+      <ResponsiveContainer width="50%" height={300}>
+        <PieChart>
+          <Pie
+            data={labReportsPieData}
+            dataKey="value"
+            nameKey="name"
+            cx="50%"
+            cy="50%"
+            outerRadius={100}
+            label
+          >
+            {labReportsPieData.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+          <Tooltip />
+        </PieChart>
+      </ResponsiveContainer>
+
+      <h2>Lab Reports Over Time</h2>
+      <ResponsiveContainer width="100%" height={300}>
+        <LineChart data={labReportsLineData}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="date" />
+          <YAxis allowDecimals={false} />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="reports" stroke="#8884d8" />
+        </LineChart>
+      </ResponsiveContainer>
+
+      <h2>Account Summary by Role</h2>
+      <ResponsiveContainer width="50%" height={300}>
+        <BarChart data={accountSummaryData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="role" />
+          <YAxis allowDecimals={false} />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="count" fill="#82ca9d" name="Number of Users" />
+        </BarChart>
+      </ResponsiveContainer>
     </div>
   );
 };
