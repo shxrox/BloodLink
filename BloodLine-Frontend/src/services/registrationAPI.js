@@ -13,7 +13,7 @@ export const getRegistrationById = async (id) => {
 };
 
 export const addRegistration = async (registrationData) => {
-    const response = await axios.post(url, registrationData); // fixed here
+    const response = await axios.post(url, registrationData); 
     return response.data;
 };
 
