@@ -18,6 +18,11 @@ import Medicine from './component/dashboard/doctor/MedicineManagement';
 import ManagementDoc from './component/dashboard/doctor/AccountManagement';
 import ManagementLab from './component/dashboard/lab/AccountManagement';
 import ManagementNurse from './component/dashboard/nurse/AccountManagement';
+import AboutD from './component/dashboard/doctor/About';
+import AboutL from './component/dashboard/lab/About';
+import AboutN from './component/dashboard/nurse/About';
+
+
 
 
 
@@ -44,6 +49,12 @@ function App() {
       <Route path="/dashboard/doctor/staff" element={<ManagementDoc />}/>
       <Route path="/dashboard/lab/staff" element={<ManagementLab />}/>
       <Route path="/dashboard/nurse/staff" element={<ManagementNurse />}/>
+      <Route path="/dashboard/doctor/about" element={<AboutD />}/>
+      <Route path="/dashboard/lab/about" element={<AboutL />}/>
+      <Route path="/dashboard/nurse/about" element={<AboutN />}/>
+
+
+
 
 
 
