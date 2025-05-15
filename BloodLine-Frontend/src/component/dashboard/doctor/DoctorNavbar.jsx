@@ -9,6 +9,7 @@ const NurseNavbar = () => {
         <Link to="/dashboard/doctor/patient-details" style={styles.link}>patient details</Link>
         <Link to="/dashboard/doctor/petient-cheking" style={styles.link}>patient check up details</Link>
         <Link to="/dashboard/doctor/petient-description" style={styles.link}>patient description</Link>
+        <Link to="/dashboard/doctor/petient-medicine" style={styles.link}>patient medicine</Link>
         <Link to="/login" style={styles.link}>Logout</Link>
       </div>
     </nav>
