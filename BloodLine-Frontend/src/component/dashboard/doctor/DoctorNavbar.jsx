@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaUserPlus } from "react-icons/fa";
 
 const NurseNavbar = () => {
   return (
@@ -12,6 +13,12 @@ const NurseNavbar = () => {
         <Link to="/dashboard/doctor/petient-medicine" style={styles.link}>patient medicine</Link>
         <Link to="/dashboard/doctor/about" style={styles.link}>about</Link>
         <Link to="/dashboard/doctor/staff" style={styles.link}>staff</Link>
+
+  <div style={styles.registerIcon}>
+  <Link to="/registration" style={{ color: "white", textDecoration: "none" }} title="Register">
+    <FaUserPlus size={20} />
+  </Link>
+</div>
 
         
         <Link to="/login" style={styles.link}>Logout</Link>
