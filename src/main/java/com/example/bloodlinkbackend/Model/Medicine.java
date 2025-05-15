@@ -17,7 +17,7 @@ public class Medicine {
     @JoinColumn(name = "patient_id", nullable = false)
     private PatientRegister patient;
 
-    // Getters and Setters
+
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

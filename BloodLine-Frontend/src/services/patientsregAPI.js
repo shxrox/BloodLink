@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const BASE_URL = 'http://localhost:8080/api/patients'; 
 
-// Add new patient
+
 export const addPatient = async (patientData) => {
     try {
         const response = await axios.post(BASE_URL, patientData);
@@ -13,7 +13,6 @@ export const addPatient = async (patientData) => {
     }
 };
 
-// Get all patients
 export const getPatients = async () => {
     try {
         const response = await axios.get(BASE_URL);
@@ -24,7 +23,6 @@ export const getPatients = async () => {
     }
 };
 
-// Get patient by ID
 export const getPatientById = async (id) => {
     try {
         const response = await axios.get(`${BASE_URL}/${id}`);
@@ -35,7 +33,7 @@ export const getPatientById = async (id) => {
     }
 };
 
-// Update patient by ID
+
 export const updatePatient = async (id, updatedData) => {
     try {
         const response = await axios.put(`${BASE_URL}/${id}`, updatedData);
@@ -46,7 +44,7 @@ export const updatePatient = async (id, updatedData) => {
     }
 };
 
-// Delete patient by ID
+
 export const deletePatient = async (id) => {
     try {
         await axios.delete(`${BASE_URL}/${id}`);

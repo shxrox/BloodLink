@@ -15,13 +15,13 @@ const Nurse = () => {
   const [labReports, setLabReports] = useState([]);
   const [accounts, setAccounts] = useState([]);
 
-  // Fetch patient queue from localStorage or API
+  
   useEffect(() => {
     const savedQueue = JSON.parse(localStorage.getItem("patientQueue")) || [];
     setPatientQueue(savedQueue);
   }, []);
 
-  // Fetch lab reports from backend
+  
   useEffect(() => {
     fetch("http://localhost:8080/api/labreports/all")
       .then(res => res.json())
@@ -29,7 +29,6 @@ const Nurse = () => {
       .catch(console.error);
   }, []);
 
-  // Fetch accounts (doctors, nurses, lab techs)
   useEffect(() => {
     fetch("http://localhost:8080/api/registrations/all")
       .then(res => res.json())
@@ -37,12 +36,10 @@ const Nurse = () => {
       .catch(console.error);
   }, []);
 
-  // ===== Patient Queue Chart Data =====
-  // For demo: Count waiting = current queue length, served = total - queue length (you can adapt based on real data)
-  // You can extend this with history or API for served counts per day
+  
   const waitingCount = patientQueue.length;
 
-  // ===== Lab Reports Pie Data =====
+
   const sentCount = labReports.filter(r => r.sentToLab).length;
   const notSentCount = labReports.length - sentCount;
   const labReportsPieData = [
@@ -50,19 +47,17 @@ const Nurse = () => {
     { name: "Not Sent", value: notSentCount },
   ];
 
-  // ===== Lab Reports Line Chart Data =====
-  // Group lab reports by reportDate and count
   const reportsByDateMap = {};
   labReports.forEach(report => {
     const date = report.reportDate || "Unknown";
     reportsByDateMap[date] = (reportsByDateMap[date] || 0) + 1;
   });
-  // Convert to array sorted by date
+
   const labReportsLineData = Object.entries(reportsByDateMap)
     .map(([date, count]) => ({ date, reports: count }))
     .sort((a, b) => new Date(a.date) - new Date(b.date));
 
-  // ===== Account Summary Data =====
+  
   const roleCounts = accounts.reduce(
     (acc, user) => {
       const role = user.role?.toLowerCase();

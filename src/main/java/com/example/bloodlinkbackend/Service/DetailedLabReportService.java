@@ -51,8 +51,8 @@ public class DetailedLabReportService {
         LabReport labReport = labReportRepository.findById(reportId)
                 .orElseThrow(() -> new RuntimeException("Lab report not found for ID: " + reportId));
 
-        report.setLabReport(labReport); // Make sure the LabReport is linked correctly
-        return detailedLabReportRepository.save(report); // Save the detailed report
+        report.setLabReport(labReport);
+        return detailedLabReportRepository.save(report);
     }
 
 }

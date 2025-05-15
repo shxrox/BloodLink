@@ -47,7 +47,9 @@ public class LabReport {
 
     public PatientRegister getPatient() { return patient; }
 
-    public void setPatient(PatientRegister patient) { this.patient = patient; }
+    public void setPatient(PatientRegister patient){
+        this.patient = patient;
+    }
 
     public String getTestType() { return testType; }
 

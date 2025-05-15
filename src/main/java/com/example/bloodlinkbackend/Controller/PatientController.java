@@ -18,7 +18,7 @@ public class PatientController {
     @Autowired
     private PatientService patientService;
 
-    // Add a new patient
+
     @PostMapping
     public ResponseEntity<PatientRegister> addPatient(@RequestBody PatientRegister patient) {
         PatientRegister savedPatient = patientService.addPatient(patient);
@@ -32,14 +32,14 @@ public class PatientController {
         return new ResponseEntity<>(patients, HttpStatus.OK);
     }
 
-    // Get patient by ID
+
     @GetMapping("/{id}")
     public ResponseEntity<PatientRegister> getPatientById(@PathVariable Long id) {
         Optional<PatientRegister> patient = patientService.getPatientById(id);
         return patient.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).build());
     }
 
-    // Update patient
+
     @PutMapping("/{id}")
     public ResponseEntity<PatientRegister> updatePatient(@PathVariable Long id, @RequestBody PatientRegister updatedPatient) {
         PatientRegister patient = patientService.updatePatient(id, updatedPatient);
@@ -49,7 +49,7 @@ public class PatientController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    // Delete patient
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletePatient(@PathVariable Long id) {
         patientService.deletePatient(id);

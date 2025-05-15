@@ -20,7 +20,7 @@ public class MedicineService {
     @Autowired
     private PatientRepository patientRegisterRepository;
 
-    // CREATE
+
     public Medicine addMedicine(Long patientId, Medicine medicine) {
         Optional<PatientRegister> optionalPatient = patientRegisterRepository.findById(patientId);
         if (optionalPatient.isPresent()) {
@@ -31,22 +31,22 @@ public class MedicineService {
         }
     }
 
-    // READ - Get all medicines
+
     public List<Medicine> getAllMedicines() {
         return medicineRepository.findAll();
     }
 
-    // READ - Get medicines by patient
+
     public List<Medicine> getMedicinesByPatientId(Long patientId) {
         return medicineRepository.findByPatient_PatientId(patientId);
     }
 
-    // READ - Get medicine by ID
+
     public Medicine getMedicineById(Long id) {
         return medicineRepository.findById(id).orElse(null);
     }
 
-    // UPDATE
+
     public Medicine updateMedicine(Long id, Medicine updatedMedicine) {
         Optional<Medicine> optional = medicineRepository.findById(id);
         if (optional.isPresent()) {
@@ -60,7 +60,7 @@ public class MedicineService {
         }
     }
 
-    // DELETE
+
     public void deleteMedicine(Long id) {
         if (medicineRepository.existsById(id)) {
             medicineRepository.deleteById(id);

@@ -36,16 +36,15 @@ const RegistrationForm = () => {
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       try {
-        // Await the registration API call
+
         await addRegistration(values);
 
-        // Show success message
         alert("Registration successful!");
 
-        // Redirect to the homepage or another page after success
+
         navigate("/");
       } catch (error) {
-        // Handle error (optional)
+        
         alert("Registration failed. Please try again.");
       }
     },
@@ -142,10 +141,7 @@ const RegistrationForm = () => {
           )}
         </div>
 
-        {/* <div>
-          <button type="submit">Register</button>
-          <button type="button" onClick={() => formik.resetForm()}>Clear</button>
-        </div> */}
+       
 <div>
   <button
     type="button"

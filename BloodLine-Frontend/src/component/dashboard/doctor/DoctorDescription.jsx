@@ -70,7 +70,7 @@ const DoctorDescription = () => {
     setFormData({
       patientId: desc.patient?.id || '',
       description: desc.description,
-      date: desc.date?.slice(0, 10), // ✅ Ensure format is YYYY-MM-DD
+      date: desc.date?.slice(0, 10), 
     });
   };
 
@@ -148,7 +148,7 @@ const DoctorDescription = () => {
               <td>{desc.id}</td>
               <td>{desc.patient?.fullName || 'N/A'}</td>
               <td>{desc.description}</td>
-              <td>{desc.date?.slice(0, 10)}</td> {/* ✅ Show only date part */}
+              <td>{desc.date?.slice(0, 10)}</td> 
               <td>
                 <button onClick={() => handleEdit(desc)}>Edit</button>{' '}
                 <button onClick={() => handleDelete(desc.id)}>Delete</button>

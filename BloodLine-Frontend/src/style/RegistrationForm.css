@@ -1,6 +1,4 @@
-/* RegistrationForm.css */
 
-/* General page styling */
 h1 {
     text-align: center;
     color: #4CAF50;
@@ -8,7 +6,7 @@ h1 {
     margin-bottom: 20px;
   }
   
-  /* Form container */
+
   form {
     width: 100%;
     max-width: 400px;
@@ -24,7 +22,7 @@ h1 {
     margin-bottom: 15px;
   }
   
-  /* Input fields styling */
+ 
   input[type="text"],
   input[type="email"],
   input[type="password"],
@@ -45,15 +43,13 @@ h1 {
     border-color: #4CAF50;
     outline: none;
   }
-  
-  /* Error message styling */
+
   div.error {
     color: red;
     font-size: 14px;
     margin-top: 5px;
   }
-  
-  /* Button styling */
+
   button {
     background-color: #4CAF50;
     color: white;
@@ -76,20 +72,18 @@ h1 {
   button[type="button"]:hover {
     background-color: #e53935;
   }
-  
-  /* Style for cancel button */
+
   button[type="button"] {
     margin-top: 10px;
   }
   
-  /* Optional: responsive styling for smaller screens */
   @media screen and (max-width: 600px) {
     form {
       padding: 15px;
       width: 90%;
     }
   }
-  /* Error message styling */
+  
 div.error {
   color: red;
   font-size: 14px;

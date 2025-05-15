@@ -29,9 +29,9 @@ const Nurse = () => {
     }
   };
 
-  // Process data for charts
+
   const processData = (data) => {
-    // Pie chart data: count reports by testType
+    
     const testTypeCounts = data.reduce((acc, report) => {
       acc[report.testType] = (acc[report.testType] || 0) + 1;
       return acc;
@@ -44,7 +44,7 @@ const Nurse = () => {
 
     setReportsByTestType(pieData);
 
-    // Line chart data: count reports by reportDate (format date string)
+
     const dateCounts = data.reduce((acc, report) => {
       const date = report.reportDate ? report.reportDate.split("T")[0] : "Unknown";
       acc[date] = (acc[date] || 0) + 1;

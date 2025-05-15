@@ -35,7 +35,7 @@ const Labdetails = () => {
     <div>
       <Navbar />
       <div className="p-6">
-        {/* Submitted Lab Reports Table */}
+     
         <h1 className="text-2xl font-semibold mb-4">Submitted Lab Reports</h1>
         <div className="overflow-x-auto mb-10">
           <table className="min-w-full border border-gray-300">
@@ -72,7 +72,7 @@ const Labdetails = () => {
           </table>
         </div>
 
-        {/* Detailed Lab Reports Table */}
+   
         <h2 className="text-2xl font-semibold mb-4">Detailed Lab Reports</h2>
         <div className="overflow-x-auto">
           <table className="min-w-full border border-gray-300">

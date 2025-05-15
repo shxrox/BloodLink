@@ -243,7 +243,7 @@ public class PatientRegister {
         this.createdBy = createdBy;
     }
 
-    // Optional: Auto-set the registration date before persisting
+
     @PrePersist
     protected void onCreate() {
         if (this.registrationDate == null) {

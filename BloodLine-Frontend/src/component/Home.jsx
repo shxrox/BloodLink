@@ -4,7 +4,7 @@ const Home = () => {
   const [queue, setQueue] = useState([]);
   const [currentPatient, setCurrentPatient] = useState(null);
 
-  // Function to load queue from localStorage
+ 
   const loadQueue = () => {
     const savedQueue = JSON.parse(localStorage.getItem("patientQueue")) || [];
     setQueue(savedQueue);
@@ -12,18 +12,18 @@ const Home = () => {
   };
 
   useEffect(() => {
-    loadQueue(); // Load once when mounted
+    loadQueue(); 
 
     const interval = setInterval(() => {
-      loadQueue(); // Refresh every 5 seconds
+      loadQueue(); 
     }, 5000);
 
-    return () => clearInterval(interval); // Clean up on unmount
+    return () => clearInterval(interval); 
   }, []);
 
   const handleNext = () => {
     const updatedQueue = [...queue];
-    updatedQueue.shift(); // Remove the first patient
+    updatedQueue.shift(); 
     setQueue(updatedQueue);
     localStorage.setItem("patientQueue", JSON.stringify(updatedQueue));
     setCurrentPatient(updatedQueue.length > 0 ? updatedQueue[0] : null);

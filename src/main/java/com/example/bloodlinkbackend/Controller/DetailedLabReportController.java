@@ -2,13 +2,14 @@ package com.example.bloodlinkbackend.Controller;
 
 import com.example.bloodlinkbackend.Model.DetailedLabReport;
 import com.example.bloodlinkbackend.Model.LabReport;
-import com.example.bloodlinkbackend.Repository.LabReportRepository;  // Import the repository
-import com.example.bloodlinkbackend.Repository.DetailedLabReportRepository;  // Import the repository
+import com.example.bloodlinkbackend.Repository.LabReportRepository;
+import com.example.bloodlinkbackend.Repository.DetailedLabReportRepository;
 import com.example.bloodlinkbackend.Service.DetailedLabReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/detailedreports")
@@ -19,10 +20,10 @@ public class DetailedLabReportController {
     private DetailedLabReportService detailedService;
 
     @Autowired
-    private LabReportRepository labReportRepository;  // Inject LabReportRepository
+    private LabReportRepository labReportRepository;
 
     @Autowired
-    private DetailedLabReportRepository detailedLabReportRepository;  // Inject DetailedLabReportRepository
+    private DetailedLabReportRepository detailedLabReportRepository;
 
 
     @PostMapping("/add/{reportId}")

@@ -37,7 +37,7 @@ const Labdetails = () => {
 
   const fetchDetailedReports = async () => {
     try {
-      const data = await getAllLabReports(); // Calls /api/detailedreports/all
+      const data = await getAllLabReports(); 
       console.log("Fetched detailed reports:", data);
       setDetailedReports(data);
     } catch (error) {
@@ -66,7 +66,7 @@ const Labdetails = () => {
 
       alert("Detailed report added successfully");
 
-      // Reset form
+  
       setIsAdding(null);
       setNewReportData({
         plateletCount: "",
@@ -76,7 +76,7 @@ const Labdetails = () => {
         notes: "",
       });
 
-      fetchDetailedReports(); // Refresh the table
+      fetchDetailedReports(); 
     } catch (error) {
       console.error("Error adding detailed report", error);
       alert("Failed to add detailed report");
@@ -123,7 +123,7 @@ const Labdetails = () => {
                     </td>
                   </tr>
 
-                  {/* Input Form */}
+               
                   {isAdding === report.reportId && (
                     <tr>
                       <td colSpan="7" className="p-4 bg-gray-50">
@@ -187,7 +187,7 @@ const Labdetails = () => {
                     </tr>
                   )}
 
-                  {/* Show associated detailed report(s) */}
+                  
                   {detailedReports
                     .filter((d) => d?.labReport?.reportId === report.reportId)
                     .map((detail, index) => (

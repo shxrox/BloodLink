@@ -17,7 +17,7 @@ const PatientQueue = () => {
 
   const handleNext = () => {
     const updatedQueue = [...queue];
-    updatedQueue.shift(); // Remove first patient
+    updatedQueue.shift(); 
     setQueue(updatedQueue);
     localStorage.setItem("patientQueue", JSON.stringify(updatedQueue));
 

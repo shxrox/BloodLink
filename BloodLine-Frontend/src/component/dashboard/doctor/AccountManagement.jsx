@@ -20,7 +20,6 @@ const AccountManagement = () => {
     }
   };
 
-  // Filter accounts by role
   const doctors = accounts.filter(acc => acc.role === "DOCTOR");
   const nurses = accounts.filter(acc => acc.role === "NURSE");
   const labtechs = accounts.filter(acc => acc.role === "LABTECH");

@@ -23,44 +23,44 @@ import AboutL from './component/dashboard/lab/About';
 import AboutN from './component/dashboard/nurse/About';
 
 
-
-
-
-
-
 function App() {
   return (
     <Routes>
-      <Route path="/registration" element={<RegistrationForm />} />
-      <Route path="/login" element={<LoginForm />} />
-      <Route path="/dashboard/nurse" element={<Nurse />} />
-      <Route path="/dashboard/doctor" element={<Doctor />} />
-      <Route path="/dashboard/lab" element={<Lab />} />
-      <Route path="/dashboard/nurse/patient-register" element={<Patientregister />} />
-      <Route path="/dashboard/nurse/patient-labreport" element={<AbbLab />} />
-      <Route path="/dashboard/doctor/patient-details" element={<Patientdetails />} />
-      <Route path="/dashboard/doctor/petient-cheking" element={<Patientcheking />} />
-      <Route path="/dashboard/nurse/patient-queue" element={<Patientqueue />} />
-      <Route path="/dashboard/lab/lab-details" element={<LabInfo />} />
-      <Route path="/dashboard/lab/lab-cheking" element={<Labdetails />} />
-      <Route path="/dashboard/nurse/lab-cheking" element={<NurseLabDatils />} />
-      <Route path="/dashboard/doctor/petient-description" element={<PetientDescription />}/>
-      <Route path="/dashboard/doctor/petient-medicine" element={<Medicine />}/>
-      <Route path="/dashboard/doctor/staff" element={<ManagementDoc />}/>
-      <Route path="/dashboard/lab/staff" element={<ManagementLab />}/>
-      <Route path="/dashboard/nurse/staff" element={<ManagementNurse />}/>
-      <Route path="/dashboard/doctor/about" element={<AboutD />}/>
-      <Route path="/dashboard/lab/about" element={<AboutL />}/>
-      <Route path="/dashboard/nurse/about" element={<AboutN />}/>
-
-
-
-
-
 
       <Route path="/" element={<Home />} />
+      <Route path="/login" element={<LoginForm />} />
+      <Route path="/registration" element={<RegistrationForm />} />
+
+
+      <Route path="/dashboard/nurse" element={<Nurse />} />
+      <Route path="/dashboard/nurse/patient-register" element={<Patientregister />} />
+      <Route path="/dashboard/nurse/patient-labreport" element={<AbbLab />} />
+      <Route path="/dashboard/nurse/patient-queue" element={<Patientqueue />} />
+      <Route path="/dashboard/nurse/lab-cheking" element={<NurseLabDatils />} />
+      <Route path="/dashboard/nurse/staff" element={<ManagementNurse />} />
+      <Route path="/dashboard/nurse/about" element={<AboutN />} />
+
+
+      <Route path="/dashboard/doctor" element={<Doctor />} />
+      <Route path="/dashboard/doctor/patient-details" element={<Patientdetails />} />
+      <Route path="/dashboard/doctor/petient-cheking" element={<Patientcheking />} />
+      <Route path="/dashboard/doctor/petient-description" element={<PetientDescription />} />
+      <Route path="/dashboard/doctor/petient-medicine" element={<Medicine />} />
+      <Route path="/dashboard/doctor/staff" element={<ManagementDoc />} />
+      <Route path="/dashboard/doctor/about" element={<AboutD />} />
+
+
+      <Route path="/dashboard/lab" element={<Lab />} />
+      <Route path="/dashboard/lab/lab-details" element={<LabInfo />} />
+      <Route path="/dashboard/lab/lab-cheking" element={<Labdetails />} />
+      <Route path="/dashboard/lab/staff" element={<ManagementLab />} />
+      <Route path="/dashboard/lab/about" element={<AboutL />} />
+
     </Routes>
   );
 }
 
 export default App;
+
+
+

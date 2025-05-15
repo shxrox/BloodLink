@@ -1,4 +1,4 @@
-// src/services/doctorDescriptionService.js
+
 import axios from 'axios';
 
 const BASE_URL = 'http://localhost:8080/api/doctor-descriptions';

@@ -34,7 +34,7 @@ const PatientDetails = () => {
     console.log("Edit patient ID:", id);
   };
 
-  // Filter patients based on search term
+  
   const filteredPatients = patients.filter((patient) =>
     patient.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
     patient.nationalId.toLowerCase().includes(searchTerm.toLowerCase()) ||

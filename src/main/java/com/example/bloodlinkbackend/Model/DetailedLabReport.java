@@ -20,7 +20,7 @@ public class DetailedLabReport {
     @JoinColumn(name = "report_id")
     private LabReport labReport;
 
-    // Getters and Setters
+
     public Long getDetailedReportId() {
         return detailedReportId;
     }

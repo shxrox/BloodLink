@@ -16,13 +16,11 @@ public class MedicineController {
     @Autowired
     private MedicineService medicineService;
 
-    // CREATE
     @PostMapping("/{patientId}")
     public ResponseEntity<Medicine> addMedicine(@PathVariable Long patientId, @RequestBody Medicine medicine) {
         return ResponseEntity.ok(medicineService.addMedicine(patientId, medicine));
     }
 
-    // READ ALL
     @GetMapping
     public ResponseEntity<List<Medicine>> getAllMedicines() {
         return ResponseEntity.ok(medicineService.getAllMedicines());
@@ -34,14 +32,14 @@ public class MedicineController {
         return ResponseEntity.ok(medicineService.getMedicinesByPatientId(patientId));
     }
 
-    // READ BY ID
+
     @GetMapping("/{id}")
     public ResponseEntity<Medicine> getMedicineById(@PathVariable Long id) {
         Medicine medicine = medicineService.getMedicineById(id);
         return medicine != null ? ResponseEntity.ok(medicine) : ResponseEntity.notFound().build();
     }
 
-    // UPDATE
+
     @PutMapping("/{id}")
     public ResponseEntity<Medicine> updateMedicine(@PathVariable Long id, @RequestBody Medicine medicine) {
         try {
@@ -51,7 +49,6 @@ public class MedicineController {
         }
     }
 
-    // DELETE
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteMedicine(@PathVariable Long id) {
         try {

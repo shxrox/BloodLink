@@ -11,7 +11,6 @@ const PatientManagement = () => {
   const [editingPatientId, setEditingPatientId] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
 
-  // Fetch all patients
   useEffect(() => {
     fetchPatients();
   }, []);
@@ -72,18 +71,16 @@ const PatientManagement = () => {
     }
   });
 
-  // Add a new patient
   const handleAddPatient = async (values) => {
     try {
       const addedPatient = await addPatient(values);
       setPatients([...patients, addedPatient]);
-      formik.resetForm(); // Clear form after adding
+      formik.resetForm(); 
     } catch (error) {
       console.error('Error adding patient:', error);
     }
   };
 
-  // Handle deleting a patient
   const handleDeletePatient = async (id) => {
     try {
       await deletePatient(id);
@@ -93,33 +90,32 @@ const PatientManagement = () => {
     }
   };
 
-  // Handle editing a patient
   const handleEditPatient = async (id) => {
     const patient = patients.find(p => p.patientId === id);
-    formik.setValues(patient); // Set form values to patient's data
+    formik.setValues(patient);
     setEditingPatientId(id);
   };
 
-  // Handle updating a patient
+
   const handleUpdatePatient = async (updatedData) => {
     try {
       const updatedPatient = await updatePatient(editingPatientId, updatedData);
       setPatients(patients.map(p => p.patientId === editingPatientId ? updatedPatient : p));
-      setEditingPatientId(null); // Clear edit state
-      formik.resetForm(); // Clear form after update
+      setEditingPatientId(null); 
+      formik.resetForm(); 
     } catch (error) {
       console.error('Error updating patient:', error);
     }
   };
 
   const handleAddToQueue = (patient) => {
-    const token = Math.floor(1000 + Math.random() * 9000); // 4-digit token
+    const token = Math.floor(1000 + Math.random() * 9000); 
     const newEntry = { name: patient.fullName, token };
 
-    // Get existing queue or initialize
+    
     const existingQueue = JSON.parse(localStorage.getItem("patientQueue")) || [];
 
-    // Add new entry and save back
+    
     existingQueue.push(newEntry);
     localStorage.setItem("patientQueue", JSON.stringify(existingQueue));
 

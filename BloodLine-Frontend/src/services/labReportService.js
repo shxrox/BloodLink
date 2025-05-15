@@ -2,7 +2,6 @@ import axios from "axios";
 
 const BASE_URL = "http://localhost:8080/api/detailedreports";
 
-// Fetch all lab reports
 export const getAllLabReports = async () => {
   try {
     const response = await axios.get(`${BASE_URL}/all`);
@@ -13,7 +12,7 @@ export const getAllLabReports = async () => {
 };
 
 
-// Get a detailed report by the associated LabReport ID
+
 export const getDetailedReportByReportId = async (reportId) => {
   try {
     const response = await axios.get(`${BASE_URL}/${reportId}`);
@@ -23,7 +22,6 @@ export const getDetailedReportByReportId = async (reportId) => {
   }
 };
 
-// Update a detailed report by its ID
 export const updateDetailedReport = async (detailedReportId, updatedData) => {
   try {
     const response = await axios.put(`${BASE_URL}/update/${detailedReportId}`, updatedData);
@@ -33,7 +31,7 @@ export const updateDetailedReport = async (detailedReportId, updatedData) => {
   }
 };
 
-// Delete a detailed report by its ID
+
 export const deleteDetailedReport = async (detailedReportId) => {
   try {
     await axios.delete(`${BASE_URL}/delete/${detailedReportId}`);

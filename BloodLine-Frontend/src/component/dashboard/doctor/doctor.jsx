@@ -56,7 +56,6 @@ const doctor = () => {
     }
   };
 
-  // Prepare data for Pie Chart (accounts by role)
   const roleCounts = accounts.reduce(
     (acc, user) => {
       if (user.role === "DOCTOR") acc.doctors++;
@@ -75,8 +74,7 @@ const doctor = () => {
 
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28"];
 
-  // Prepare data for Bar Chart (medicines count per patient)
-  // Group medicines by patient fullName, count medicines
+
   const medicineCountByPatient = medicines.reduce((acc, med) => {
     const name = med.patient?.fullName || "Unknown";
     acc[name] = (acc[name] || 0) + 1;
@@ -88,20 +86,19 @@ const doctor = () => {
     count,
   }));
 
-  // Prepare data for Line Chart (Doctor descriptions over time)
-  // Group descriptions by date (YYYY-MM-DD), count
+
   const descCountByDate = doctorDescriptions.reduce((acc, desc) => {
     const date = desc.date?.slice(0, 10) || "Unknown";
     acc[date] = (acc[date] || 0) + 1;
     return acc;
   }, {});
 
-  // Sort dates ascending
+
   const lineData = Object.entries(descCountByDate)
     .map(([date, count]) => ({ date, count }))
     .sort((a, b) => new Date(a.date) - new Date(b.date));
 
-  // Prepare data for Lab Reports Pie (Sent to Lab vs Not)
+
   const labSentCount = labReports.reduce(
     (acc, report) => {
       if (report.sentToLab) acc.sent++;
@@ -122,7 +119,7 @@ const doctor = () => {
       <h1>Admin Dashboard - Charts Overview</h1>
 
       <div style={{ display: "flex", gap: "50px", flexWrap: "wrap" }}>
-        {/* Pie Chart: Accounts by Role */}
+     
         <div style={{ flex: "1 1 400px", textAlign: "center" }}>
           <h3>User Roles Distribution</h3>
           <PieChart width={350} height={300}>
@@ -136,7 +133,7 @@ const doctor = () => {
           </PieChart>
         </div>
 
-        {/* Bar Chart: Medicines per Patient */}
+      
         <div style={{ flex: "1 1 400px", textAlign: "center" }}>
           <h3>Medicines per Patient</h3>
           <BarChart width={400} height={300} data={barData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
@@ -148,7 +145,7 @@ const doctor = () => {
           </BarChart>
         </div>
 
-        {/* Line Chart: Doctor Descriptions Over Time */}
+      
         <div style={{ flex: "1 1 400px", textAlign: "center" }}>
           <h3>Doctor Descriptions Over Time</h3>
           <LineChart width={400} height={300} data={lineData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>

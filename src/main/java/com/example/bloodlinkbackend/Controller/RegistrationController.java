@@ -12,13 +12,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/registration")
-@CrossOrigin(origins = "http://localhost:5173") // Allow frontend access from Vite
+@CrossOrigin(origins = "http://localhost:5173")
 public class RegistrationController {
 
     @Autowired
     private RegistrationRepository registrationRepository;
 
-    // POST - Register a new user
+
     @PostMapping
     public ResponseEntity<?> registerUser(@Valid @RequestBody Registration registration) {
         try {
@@ -29,13 +29,13 @@ public class RegistrationController {
         }
     }
 
-    // GET - Get all registrations (for admin or debugging)
+
     @GetMapping
     public List<Registration> getAllRegistrations() {
         return registrationRepository.findAll();
     }
 
-    // GET - Get registration by ID
+
     @GetMapping("/{id}")
     public ResponseEntity<?> getRegistrationById(@PathVariable Long id) {
         return registrationRepository.findById(id)
@@ -43,7 +43,7 @@ public class RegistrationController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    // DELETE - Delete registration by ID
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteRegistration(@PathVariable Long id) {
         if (registrationRepository.existsById(id)) {
@@ -54,7 +54,7 @@ public class RegistrationController {
         }
     }
 
-    // PUT - Update existing registration
+
     @PutMapping("/{id}")
     public ResponseEntity<Registration> updateRegistration(@PathVariable Long id, @Valid @RequestBody Registration updated) {
         Registration existing = registrationRepository.findById(id)

@@ -8,8 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/auth") // You can change this if you like
-@CrossOrigin(origins = "http://localhost:5173") // Allow frontend requests
+@RequestMapping("/auth")
+@CrossOrigin(origins = "http://localhost:5173")
 public class LoginController {
 
     @Autowired
