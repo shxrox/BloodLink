@@ -1,44 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaUserPlus } from "react-icons/fa";
-
+import { FaUser } from "react-icons/fa";
+import logo from "../../../assets/logo.png";
+import '../../../style/NurseNavbar.css';
 
 const NurseNavbar = () => {
-  return (
-    <nav style={styles.navbar}>
-      <div>
-        <Link to="/dashboard/nurse" style={styles.link}>Home</Link>
-        <Link to="/dashboard/nurse/patient-register" style={styles.link}>patient Register</Link>
-        <Link to="/dashboard/nurse/patient-queue" style={styles.link}>patient queue</Link>
-        <Link to="/dashboard/nurse/patient-labreport" style={styles.link}>patient lab</Link>
-        <Link to="/dashboard/nurse/lab-cheking" style={styles.link}>patient Detailed Report</Link>
-        <Link to="/dashboard/nurse/staff" style={styles.link}>staff</Link>
-        <Link to="/dashboard/nurse/about" style={styles.link}>about</Link>
-        <Link to="/login" style={styles.link}>Logout</Link>
-        <div style={styles.registerIcon}>
-  <Link to="/registration" style={{ color: "white", textDecoration: "none" }} title="Register">
-    <FaUserPlus size={20} />
-  </Link>
-</div>
+  const [menuOpen, setMenuOpen] = useState(false);
 
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
+  return (
+    <nav className="nurse-navbar">
+      <div className="navbar-content">
+        <Link to="/dashboard/nurse" className="navbar-logo-link" onClick={() => setMenuOpen(false)}>
+          <img src={logo} alt="Logo" className="navbar-logo" />
+        </Link>
+
+        <div className={`navbar-links ${menuOpen ? 'active' : ''}`}>
+          <Link to="/dashboard/nurse" className="navbar-link" onClick={() => setMenuOpen(false)}>Home</Link>
+          <Link to="/dashboard/nurse/patient-register" className="navbar-link" onClick={() => setMenuOpen(false)}>Patient Register</Link>
+          <Link to="/dashboard/nurse/patient-queue" className="navbar-link" onClick={() => setMenuOpen(false)}>Patient Queue</Link>
+          <Link to="/dashboard/nurse/patient-labreport" className="navbar-link" onClick={() => setMenuOpen(false)}>Patient Lab</Link>
+          <Link to="/dashboard/nurse/lab-cheking" className="navbar-link" onClick={() => setMenuOpen(false)}>Detailed Report</Link>
+          <Link to="/dashboard/nurse/staff" className="navbar-link" onClick={() => setMenuOpen(false)}>Staff</Link>
+          <Link to="/dashboard/nurse/about" className="navbar-link" onClick={() => setMenuOpen(false)}>About</Link>
+          <Link to="/login" className="navbar-link" onClick={() => setMenuOpen(false)}>Logout</Link>
+          <Link to="/registration" className="navbar-register-icon" title="Register" onClick={() => setMenuOpen(false)}>
+           <FaUser />
+          </Link>
+        </div>
+
+        <div className="menu-toggle" onClick={toggleMenu}>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
     </nav>
   );
-};
-
-const styles = {
-  navbar: {
-    backgroundColor: "green",
-    padding: "10px",
-    display: "flex",
-    justifyContent: "center",
-  },
-  link: {
-    margin: "0 15px",
-    color: "white",
-    textDecoration: "none",
-    fontWeight: "bold",
-  }
 };
 
 export default NurseNavbar;
