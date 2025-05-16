@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import '../style/Home.css';
 
 const Home = () => {
   const [queue, setQueue] = useState([]);
   const [currentPatient, setCurrentPatient] = useState(null);
 
- 
   const loadQueue = () => {
     const savedQueue = JSON.parse(localStorage.getItem("patientQueue")) || [];
     setQueue(savedQueue);
@@ -12,62 +12,46 @@ const Home = () => {
   };
 
   useEffect(() => {
-    loadQueue(); 
-
-    const interval = setInterval(() => {
-      loadQueue(); 
-    }, 5000);
-
-    return () => clearInterval(interval); 
+    loadQueue();
+    const interval = setInterval(loadQueue, 5000);
+    return () => clearInterval(interval);
   }, []);
 
-  const handleNext = () => {
-    const updatedQueue = [...queue];
-    updatedQueue.shift(); 
-    setQueue(updatedQueue);
-    localStorage.setItem("patientQueue", JSON.stringify(updatedQueue));
-    setCurrentPatient(updatedQueue.length > 0 ? updatedQueue[0] : null);
-  };
-
   return (
-    <div>
-      <h1>Patient Queue</h1>
+    <div className="home-wrapper">
+      <h1 className="home-title">Welcome to BloodLine</h1>
+
+      <div className="scrolling-instructions">
+        <div className="scrolling-text">
+          📌 Please remain in the waiting area. You will be called according to your token number. &nbsp;&nbsp;&nbsp;
+          🪪 Make sure to have your ID and token ready when it's your turn. &nbsp;&nbsp;&nbsp;
+          ⏳ If you miss your turn, you may need to rejoin the queue. Thank you for your patience!
+        </div>
+      </div>
 
       {currentPatient ? (
-        <div style={{ marginBottom: '20px', padding: '10px', border: '2px solid green', width: 'fit-content' }}>
-          <h3>Currently Attending:</h3>
+        <div className="current-patient-box">
+          <h3>▶ Currently Attending:</h3>
           <p><strong>Name:</strong> {currentPatient.name}</p>
           <p><strong>Token:</strong> {currentPatient.token}</p>
         </div>
       ) : (
-        <p>No patient is currently being attended.</p>
+        <p className="no-current">No patient is currently being attended.</p>
       )}
 
-      {queue.length <= 1 ? (
-        <p>No patients in queue.</p>
-      ) : (
-        <>
-          <h4>Upcoming</h4>
-          <table border="1" style={{ width: '50%', marginTop: '20px', borderCollapse: 'collapse' }}>
-            <thead>
-              <tr>
-                <th>Patient Name</th>
-                <th>Token Number</th>
-              </tr>
-            </thead>
-            <tbody>
-              {queue.slice(1).map((entry, index) => (
-                <tr key={index}>
-                  <td>{entry.name}</td>
-                  <td>{entry.token}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </>
+      {queue.length > 1 && (
+        <div className="upcoming-patients">
+          <h4>Upcoming Patients</h4>
+          <ul className="patient-list">
+            {queue.slice(1, 4).map((entry, index) => (
+              <li key={index} className={`patient-item fade-${index}`}>
+                <span className="patient-name">{entry.name}</span>
+                <span className="patient-token">Token: {entry.token}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
-
-  
     </div>
   );
 };
