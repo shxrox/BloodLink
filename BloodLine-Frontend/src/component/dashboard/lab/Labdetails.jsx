@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "./LabNavbar";
 import Footer from '../../Footer';
+import '../../../labstyle/Labdetails.css';
 
 import {
   getAllLabReports,
@@ -37,8 +38,7 @@ const Labdetails = () => {
 
   const fetchDetailedReports = async () => {
     try {
-      const data = await getAllLabReports(); 
-      console.log("Fetched detailed reports:", data);
+      const data = await getAllLabReports();
       setDetailedReports(data);
     } catch (error) {
       console.error("Error fetching detailed reports", error);
@@ -46,7 +46,7 @@ const Labdetails = () => {
   };
 
   const handleActionClick = (reportId) => {
-    setIsAdding(reportId);
+    setIsAdding(isAdding === reportId ? null : reportId);
   };
 
   const handleInputChange = (e) => {
@@ -66,7 +66,6 @@ const Labdetails = () => {
 
       alert("Detailed report added successfully");
 
-  
       setIsAdding(null);
       setNewReportData({
         plateletCount: "",
@@ -76,7 +75,7 @@ const Labdetails = () => {
         notes: "",
       });
 
-      fetchDetailedReports(); 
+      fetchDetailedReports();
     } catch (error) {
       console.error("Error adding detailed report", error);
       alert("Failed to add detailed report");
@@ -84,134 +83,134 @@ const Labdetails = () => {
   };
 
   return (
-    <div>
+    <div className="lab-details-page">
       <Navbar />
-      <div className="p-6">
-        <h1 className="text-2xl font-semibold mb-4">Submitted Lab Reports</h1>
+      <div className="lab-details-container">
+        <h1 className="main-title">Submitted Lab Reports</h1>
 
-        <div className="overflow-x-auto">
-          <table className="min-w-full border border-gray-300">
-            <thead className="bg-gray-100">
+        <div className="table-wrapper">
+          <table className="lab-reports-table">
+            <thead className="table-header">
               <tr>
-                <th className="border px-4 py-2">Patient</th>
-                <th className="border px-4 py-2">Test Type</th>
-                <th className="border px-4 py-2">Result Summary</th>
-                <th className="border px-4 py-2">Sent to Lab</th>
-                <th className="border px-4 py-2">Technician</th>
-                <th className="border px-4 py-2">Date</th>
-                <th className="border px-4 py-2">Action</th>
+                <th>Patient</th>
+                <th>Test Type</th>
+                <th>Result Summary</th>
+                <th>Sent to Lab</th>
+                <th>Technician</th>
+                <th>Date</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              {labReports.map((report) => (
-                <React.Fragment key={report.reportId}>
-                  <tr>
-                    <td className="border px-4 py-2">{report.patient?.fullName || "N/A"}</td>
-                    <td className="border px-4 py-2">{report.testType}</td>
-                    <td className="border px-4 py-2">{report.resultSummary}</td>
-                    <td className="border px-4 py-2">{report.sentToLab ? "Yes" : "No"}</td>
-                    <td className="border px-4 py-2">{report.labTechnician}</td>
-                    <td className="border px-4 py-2">{report.reportDate}</td>
-                    <td className="border px-4 py-2 text-center">
-                      <button
-                        onClick={() => handleActionClick(report.reportId)}
-                        className="text-green-600 text-xl hover:text-green-800"
-                        title="Add/View Action"
-                      >
-                        +
-                      </button>
-                    </td>
-                  </tr>
-
-               
-                  {isAdding === report.reportId && (
-                    <tr>
-                      <td colSpan="7" className="p-4 bg-gray-50">
-                        <form
-                          onSubmit={(e) => {
-                            e.preventDefault();
-                            handleSubmit(report.reportId);
-                          }}
-                        >
-                          <div className="grid grid-cols-2 gap-4">
-                            <input
-                              type="text"
-                              name="plateletCount"
-                              placeholder="Platelet Count"
-                              value={newReportData.plateletCount}
-                              onChange={handleInputChange}
-                              className="border p-2"
-                              required
-                            />
-                            <input
-                              type="text"
-                              name="hemoglobinLevel"
-                              placeholder="Hemoglobin Level"
-                              value={newReportData.hemoglobinLevel}
-                              onChange={handleInputChange}
-                              className="border p-2"
-                              required
-                            />
-                            <input
-                              type="text"
-                              name="wbcCount"
-                              placeholder="WBC Count"
-                              value={newReportData.wbcCount}
-                              onChange={handleInputChange}
-                              className="border p-2"
-                              required
-                            />
-                            <input
-                              type="text"
-                              name="rbcCount"
-                              placeholder="RBC Count"
-                              value={newReportData.rbcCount}
-                              onChange={handleInputChange}
-                              className="border p-2"
-                              required
-                            />
-                            <textarea
-                              name="notes"
-                              placeholder="Notes"
-                              value={newReportData.notes}
-                              onChange={handleInputChange}
-                              className="border p-2 col-span-2"
-                              rows="3"
-                            ></textarea>
-                          </div>
-                          <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">
-                            Add Report
-                          </button>
-                        </form>
-                      </td>
-                    </tr>
-                  )}
-
-                  
-                  {detailedReports
-                    .filter((d) => d?.labReport?.reportId === report.reportId)
-                    .map((detail, index) => (
-                      <tr key={`detail-${index}`}>
-                        <td colSpan="7" className="p-2 bg-gray-100">
-                          <div className="text-sm">
-                            <strong>Platelet Count:</strong> {detail.plateletCount} |{" "}
-                            <strong>Hemoglobin:</strong> {detail.hemoglobinLevel} |{" "}
-                            <strong>WBC:</strong> {detail.wbcCount} |{" "}
-                            <strong>RBC:</strong> {detail.rbcCount}
-                            <br />
-                            <strong>Notes:</strong> {detail.notes}
-                          </div>
-                        </td>
-                      </tr>
-                    ))}
-                </React.Fragment>
-              ))}
-              {labReports.length === 0 && (
+              {labReports.length === 0 ? (
                 <tr>
-                  <td colSpan="7" className="text-center py-4 text-gray-500">
+                  <td colSpan="7" className="no-reports-message">
                     No lab reports available.
                   </td>
                 </tr>
+              ) : (
+                labReports.map((report) => (
+                  <React.Fragment key={report.reportId}>
+                    <tr>
+                      <td data-label="Patient">{report.patient?.fullName || "N/A"}</td>
+                      <td data-label="Test Type">{report.testType}</td>
+                      <td data-label="Result Summary">{report.resultSummary}</td>
+                      <td data-label="Sent to Lab">{report.sentToLab ? "Yes" : "No"}</td>
+                      <td data-label="Technician">{report.labTechnician}</td>
+                      <td data-label="Date">{report.reportDate}</td>
+                      <td data-label="Action" className="action-cell">
+                        <button
+                          onClick={() => handleActionClick(report.reportId)}
+                          className="action-button"
+                          title="Add/View Action"
+                        >
+                          {isAdding === report.reportId ? "-" : "+"}
+                        </button>
+                      </td>
+                    </tr>
+
+                    {isAdding === report.reportId && (
+                      <tr className="add-report-row">
+                        <td colSpan="7" className="add-report-form-cell">
+                          <form
+                            onSubmit={(e) => {
+                              e.preventDefault();
+                              handleSubmit(report.reportId);
+                            }}
+                            className="add-report-form"
+                          >
+                            <div className="form-grid">
+                              <input
+                                type="text"
+                                name="plateletCount"
+                                placeholder="Platelet Count"
+                                value={newReportData.plateletCount}
+                                onChange={handleInputChange}
+                                className="form-input"
+                                required
+                              />
+                              <input
+                                type="text"
+                                name="hemoglobinLevel"
+                                placeholder="Hemoglobin Level"
+                                value={newReportData.hemoglobinLevel}
+                                onChange={handleInputChange}
+                                className="form-input"
+                                required
+                              />
+                              <input
+                                type="text"
+                                name="wbcCount"
+                                placeholder="WBC Count"
+                                value={newReportData.wbcCount}
+                                onChange={handleInputChange}
+                                className="form-input"
+                                required
+                              />
+                              <input
+                                type="text"
+                                name="rbcCount"
+                                placeholder="RBC Count"
+                                value={newReportData.rbcCount}
+                                onChange={handleInputChange}
+                                className="form-input"
+                                required
+                              />
+                              <textarea
+                                name="notes"
+                                placeholder="Notes"
+                                value={newReportData.notes}
+                                onChange={handleInputChange}
+                                className="form-textarea"
+                                rows="3"
+                              ></textarea>
+                            </div>
+                            <button type="submit" className="submit-button">
+                              Add Report
+                            </button>
+                          </form>
+                        </td>
+                      </tr>
+                    )}
+
+                    {detailedReports
+                      .filter((d) => d?.labReport?.reportId === report.reportId)
+                      .map((detail, index) => (
+                        <tr key={`detail-${index}`} className="detailed-report-row">
+                          <td colSpan="7" className="detailed-report-cell">
+                            <div className="detailed-report-content">
+                              <strong>Platelet Count:</strong> {detail.plateletCount} |{" "}
+                              <strong>Hemoglobin:</strong> {detail.hemoglobinLevel} |{" "}
+                              <strong>WBC:</strong> {detail.wbcCount} |{" "}
+                              <strong>RBC:</strong> {detail.rbcCount}
+                              <br />
+                              <strong>Notes:</strong> {detail.notes}
+                            </div>
+                          </td>
+                        </tr>
+                      ))}
+                  </React.Fragment>
+                ))
               )}
             </tbody>
           </table>

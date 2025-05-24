@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "./LabNavbar";
 import Footer from '../../Footer';
+import '../../../labstyle/LabSubmitInfo.css';
 
 
 const LabSubmitInfo = () => {
@@ -14,39 +15,40 @@ const LabSubmitInfo = () => {
   }, []);
 
   return (
-    <div>
+    <div className="lab-submit-info-page">
       <Navbar />
-      <div className="p-6">
-        <h1 className="text-2xl font-semibold mb-4">Submitted Lab Reports</h1>
-        <div className="overflow-x-auto">
-          <table className="min-w-full border border-gray-300">
-            <thead className="bg-gray-100">
+      <div className="lab-submit-info-container">
+        <h1 className="main-title">Submitted Lab Reports</h1>
+        <div className="table-wrapper">
+          <table className="lab-reports-table">
+            <thead className="table-header">
               <tr>
-                <th className="border px-4 py-2">Patient</th>
-                <th className="border px-4 py-2">Test Type</th>
-                <th className="border px-4 py-2">Result Summary</th>
-                <th className="border px-4 py-2">Sent to Lab</th>
-                <th className="border px-4 py-2">Technician</th>
-                <th className="border px-4 py-2">Date</th>
+                <th>Patient</th>
+                <th>Test Type</th>
+                <th>Result Summary</th>
+                <th>Sent to Lab</th>
+                <th>Technician</th>
+                <th>Date</th>
               </tr>
             </thead>
             <tbody>
-              {labReports.map((report) => (
-                <tr key={report.reportId}>
-                  <td className="border px-4 py-2">{report.patient?.fullName || "N/A"}</td>
-                  <td className="border px-4 py-2">{report.testType}</td>
-                  <td className="border px-4 py-2">{report.resultSummary}</td>
-                  <td className="border px-4 py-2">{report.sentToLab ? "Yes" : "No"}</td>
-                  <td className="border px-4 py-2">{report.labTechnician}</td>
-                  <td className="border px-4 py-2">{report.reportDate}</td>
-                </tr>
-              ))}
-              {labReports.length === 0 && (
+              {labReports.length === 0 ? (
                 <tr>
-                  <td colSpan="6" className="text-center py-4">
+                  <td colSpan="6" className="no-reports-message">
                     No lab reports available.
                   </td>
                 </tr>
+              ) : (
+                labReports.map((report) => (
+                  <tr key={report.reportId}>
+                    <td data-label="Patient">{report.patient?.fullName || "N/A"}</td>
+                    <td data-label="Test Type">{report.testType}</td>
+                    <td data-label="Result Summary">{report.resultSummary}</td>
+                    <td data-label="Sent to Lab">{report.sentToLab ? "Yes" : "No"}</td>
+                    <td data-label="Technician">{report.labTechnician}</td>
+                    <td data-label="Date">{report.reportDate}</td>
+                  </tr>
+                ))
               )}
             </tbody>
           </table>
