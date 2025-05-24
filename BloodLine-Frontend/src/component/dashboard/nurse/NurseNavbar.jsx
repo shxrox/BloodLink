@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FaUser } from "react-icons/fa";
 import logo from "../../../assets/logo.png";
 import '../../../style/NurseNavbar.css';
 
@@ -25,9 +24,6 @@ const NurseNavbar = () => {
           <Link to="/dashboard/nurse/staff" className="navbar-link" onClick={() => setMenuOpen(false)}>Staff</Link>
           <Link to="/dashboard/nurse/about" className="navbar-link" onClick={() => setMenuOpen(false)}>About</Link>
           <Link to="/login" className="navbar-link" onClick={() => setMenuOpen(false)}>Logout</Link>
-          <Link to="/registration" className="navbar-register-icon" title="Register" onClick={() => setMenuOpen(false)}>
-           <FaUser />
-          </Link>
         </div>
 
         <div className="menu-toggle" onClick={toggleMenu}>

@@ -1,7 +1,7 @@
-LabSubmitInfo.lab-navbar {
+.lab-navbar {
   background-color: #ffffff;
   padding: 0 20px;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 3px 8px rgba(255, 4, 4, 0.1);
   position: sticky;
   top: 0;
   z-index: 1000;
