@@ -1,0 +1,203 @@
+.patient-queue-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #343a40;
+}
+
+.patient-queue-container {
+  flex-grow: 1;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+.patient-queue-title {
+  color: #c0392b;
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.current-patient-heading,
+.queue-list-title {
+  color: #495057;
+  font-size: 1.8rem;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.no-patient-message,
+.no-queue-message {
+  font-size: 1.2rem;
+  color: #6c757d;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #e9ecef;
+  border-radius: 5px;
+  border: 1px solid #dee2e6;
+}
+
+.current-patient-card {
+  background-color: #e6ffee;
+  border: 2px solid #28a745;
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 10px rgba(40, 167, 69, 0.2);
+  display: inline-block;
+  min-width: 300px;
+  text-align: left;
+}
+
+.current-patient-card p {
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+.current-patient-card strong {
+  color: #212529;
+}
+
+.next-patient-btn {
+  background-color: #c0392b;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+}
+
+.next-patient-btn:hover {
+  background-color: #a53023;
+  transform: translateY(-2px);
+}
+
+.queue-table-wrapper {
+  overflow-x: auto;
+  margin-top: 20px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+}
+
+.patient-queue-table {
+  width: 100%;
+  min-width: 450px;
+  border-collapse: collapse;
+}
+
+.patient-queue-table th,
+.patient-queue-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e9ecef;
+  white-space: nowrap;
+}
+
+.patient-queue-table th {
+  background-color: #f0f2f5;
+  color: #495057;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.patient-queue-table tbody tr:nth-child(even) {
+  background-color: #fcfcfc;
+}
+
+.patient-queue-table tbody tr:hover {
+  background-color: #eef2f5;
+  transition: background-color 0.2s ease;
+}
+
+.patient-queue-table td {
+  color: #343a40;
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  .patient-queue-container {
+    padding: 15px;
+    margin: 15px auto;
+  }
+
+  .patient-queue-title {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+  }
+
+  .current-patient-heading,
+  .queue-list-title {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    margin-bottom: 15px;
+  }
+
+  .current-patient-card {
+    min-width: unset;
+    width: 90%;
+    padding: 20px;
+  }
+
+  .patient-queue-table {
+    min-width: 350px;
+  }
+
+  .patient-queue-table th,
+  .patient-queue-table td {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .next-patient-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .patient-queue-container {
+    padding: 10px;
+    margin: 10px auto;
+  }
+
+  .patient-queue-title {
+    font-size: 2rem;
+  }
+
+  .current-patient-card {
+    padding: 15px;
+  }
+
+  .current-patient-card p {
+    font-size: 1rem;
+  }
+
+  .next-patient-btn {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+
+  .no-patient-message,
+  .no-queue-message {
+    font-size: 1rem;
+    padding: 10px;
+  }
+}

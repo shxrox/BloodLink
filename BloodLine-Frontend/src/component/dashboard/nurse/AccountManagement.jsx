@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getRegistrations } from "../../../services/RegistrationAPI";
 import Navbar from './NurseNavbar';
 import Footer from '../../Footer';
-
+import "../../../style/AccountManagement.css";
 
 const AccountManagement = () => {
   const [accounts, setAccounts] = useState([]);
@@ -25,41 +25,48 @@ const AccountManagement = () => {
   const labtechs = accounts.filter(acc => acc.role === "LABTECH");
 
   const renderTable = (title, data) => (
-    <div style={{ marginBottom: "40px" }}>
-      <h3>{title}</h3>
-      <table border="1" cellPadding="8" style={{ width: "100%", textAlign: "left" }}>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Mobile</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.length === 0 ? (
-            <tr><td colSpan="3" style={{ textAlign: "center" }}>No {title.toLowerCase()} found</td></tr>
-          ) : (
-            data.map(acc => (
-              <tr key={acc.id}>
-                <td>{acc.name}</td>
-                <td>{acc.email}</td>
-                <td>{acc.mobile_num}</td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
-    </div>
+    <section className="account-section">
+      <h3 className="section-title">{title}</h3>
+      <div className="table-scroll-wrapper">
+        <table className="account-table">
+          <thead className="table-header">
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Mobile</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.length === 0 ? (
+              <tr><td colSpan="3" className="no-accounts-message">No {title.toLowerCase()} found.</td></tr>
+            ) : (
+              data.map(acc => (
+                <tr key={acc.id}>
+                  <td data-label="Name">{acc.name}</td>
+                  <td data-label="Email">{acc.email}</td>
+                  <td data-label="Mobile">{acc.mobile_num}</td>
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
+    </section>
   );
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="account-management-page">
       <Navbar />
-      <h2>Account Management</h2>
-      {renderTable("Doctors", doctors)}
-      {renderTable("Nurses", nurses)}
-      {renderTable("Lab Technicians", labtechs)}
-    <Footer />
+      <div className="account-management-container">
+        <h1 className="main-title">Account Management</h1>
+
+        {renderTable("Doctors", doctors)}
+        <hr className="section-divider" />
+        {renderTable("Nurses", nurses)}
+        <hr className="section-divider" />
+        {renderTable("Lab Technicians", labtechs)}
+      </div>
+      <Footer />
     </div>
   );
 };

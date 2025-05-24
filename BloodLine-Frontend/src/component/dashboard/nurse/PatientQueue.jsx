@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Navbar from './NurseNavbar';
 import Footer from '../../Footer';
-
+import "../../../style/PatientQueue.css";
 
 const PatientQueue = () => {
   const [queue, setQueue] = useState([]);
@@ -17,7 +17,7 @@ const PatientQueue = () => {
 
   const handleNext = () => {
     const updatedQueue = [...queue];
-    updatedQueue.shift(); 
+    updatedQueue.shift();
     setQueue(updatedQueue);
     localStorage.setItem("patientQueue", JSON.stringify(updatedQueue));
 
@@ -29,43 +29,48 @@ const PatientQueue = () => {
   };
 
   return (
-    <div>
+    <div className="patient-queue-page">
       <Navbar />
-      <h1>Patient Queue</h1>
+      <div className="patient-queue-container">
+        <h1 className="patient-queue-title">Patient Queue</h1>
 
-      {currentPatient ? (
-        <div style={{ marginBottom: '20px', padding: '10px', border: '2px solid green', width: 'fit-content' }}>
-          <h3>Currently Attending:</h3>
-          <p><strong>Name:</strong> {currentPatient.name}</p>
-          <p><strong>Token:</strong> {currentPatient.token}</p>
-        </div>
-      ) : (
-        <p>No patient is currently being attended.</p>
-      )}
+        {currentPatient ? (
+          <div className="current-patient-card">
+            <h3 className="current-patient-heading">Currently Attending:</h3>
+            <p><strong>Name:</strong> {currentPatient.name}</p>
+            <p><strong>Token:</strong> {currentPatient.token}</p>
+            <button onClick={handleNext} className="next-patient-btn">Next Patient</button>
+          </div>
+        ) : (
+          <p className="no-patient-message">No patient is currently being attended.</p>
+        )}
 
-      {queue.length === 0 ? (
-        <p>No patients in queue.</p>
-      ) : (
-        <>
-          <table border="1" style={{ width: '50%', marginTop: '20px', borderCollapse: 'collapse' }}>
-            <thead>
-              <tr>
-                <th>Patient Name</th>
-                <th>Token Number</th>
-              </tr>
-            </thead>
-            <tbody>
-              {queue.slice(1).map((entry, index) => (
-                <tr key={index}>
-                  <td>{entry.name}</td>
-                  <td>{entry.token}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          <button onClick={handleNext} style={{ marginTop: '20px', padding: '10px 20px' }}>Next</button>
-        </>
-      )}
+        {queue.length <= 1 ? ( 
+          <p className="no-queue-message">No patients in queue.</p>
+        ) : (
+          <>
+            <h2 className="queue-list-title">Upcoming Patients</h2>
+            <div className="queue-table-wrapper">
+              <table className="patient-queue-table">
+                <thead>
+                  <tr>
+                    <th>Patient Name</th>
+                    <th>Token Number</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {queue.slice(1).map((entry, index) => ( 
+                    <tr key={index}>
+                      <td>{entry.name}</td>
+                      <td>{entry.token}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </>
+        )}
+      </div>
       <Footer />
     </div>
   );

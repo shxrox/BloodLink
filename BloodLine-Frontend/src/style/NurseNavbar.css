@@ -1,5 +1,5 @@
 .nurse-navbar {
-  background-color: #c0392b;
+  background-color: #ffffff;
   padding: 0 20px;
   box-shadow: 0 3px 8px rgba(192, 57, 43, 0.7);
   position: sticky;
@@ -31,7 +31,7 @@
 }
 
 .navbar-link {
-  color: white;
+  color: rgb(122, 11, 11);
   text-decoration: none;
   font-weight: 600;
   padding: 8px 10px;
@@ -40,7 +40,7 @@
 }
 
 .navbar-link:hover {
-  background-color: #e74c3c;
+  background-color: #e74d3c3b;
 }
 
 .navbar-register-icon {

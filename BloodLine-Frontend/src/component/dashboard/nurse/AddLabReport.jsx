@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import Navbar from "./NurseNavbar"; 
+import Navbar from "./NurseNavbar";
 import Footer from '../../Footer';
-
+import "../../../style/AddLabReport.css";
 
 
 const AddLabReport = () => {
@@ -89,157 +89,183 @@ const AddLabReport = () => {
   };
 
   return (
-    <div className="p-4">
-        <Navbar />
-      <h2 className="text-xl font-semibold mb-4">
-        {editingReportId ? "Edit Lab Report" : "Add Lab Report"}
-      </h2>
-      <form onSubmit={formik.handleSubmit} className="space-y-4 bg-white p-4 shadow rounded">
-        <div>
-          <label>Patient:</label>
-          <select
-            name="patientId"
-            value={formik.values.patientId}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            className="block w-full p-2 border border-gray-300 rounded"
-          >
-            <option value="">-- Select Patient --</option>
-            {patients.map((p) => (
-              <option key={p.patientId} value={p.patientId}>
-                {p.fullName}
-              </option>
-            ))}
-          </select>
-          {formik.touched.patientId && formik.errors.patientId && (
-            <div className="text-red-500 text-sm">{formik.errors.patientId}</div>
-          )}
-        </div>
+    <div className="add-lab-report-page">
+      <Navbar />
+      <div className="add-lab-report-container">
+        <h2 className="form-title">
+          {editingReportId ? "Edit Lab Report" : "Add Lab Report"}
+        </h2>
+        <form onSubmit={formik.handleSubmit} className="lab-report-form">
+          <div className="form-group">
+            <label htmlFor="patientId" className="form-label">Patient:</label>
+            <select
+              id="patientId"
+              name="patientId"
+              value={formik.values.patientId}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className="form-input"
+            >
+              <option value="">-- Select Patient --</option>
+              {patients.map((p) => (
+                <option key={p.patientId} value={p.patientId}>
+                  {p.fullName}
+                </option>
+              ))}
+            </select>
+            {formik.touched.patientId && formik.errors.patientId && (
+              <div className="error-message">{formik.errors.patientId}</div>
+            )}
+          </div>
 
-        <div>
-          <label>Test Type:</label>
-          <input
-            type="text"
-            name="testType"
-            value={formik.values.testType}
-            onChange={formik.handleChange}
-            className="block w-full p-2 border border-gray-300 rounded"
-          />
-        </div>
+          <div className="form-group">
+            <label htmlFor="testType" className="form-label">Test Type:</label>
+            <input
+              type="text"
+              id="testType"
+              name="testType"
+              value={formik.values.testType}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className="form-input"
+            />
+            {formik.touched.testType && formik.errors.testType && (
+              <div className="error-message">{formik.errors.testType}</div>
+            )}
+          </div>
 
-        <div>
-          <label>Result Summary:</label>
-          <textarea
-            name="resultSummary"
-            value={formik.values.resultSummary}
-            onChange={formik.handleChange}
-            className="block w-full p-2 border border-gray-300 rounded"
-          />
-        </div>
+          <div className="form-group">
+            <label htmlFor="resultSummary" className="form-label">Result Summary:</label>
+            <textarea
+              id="resultSummary"
+              name="resultSummary"
+              value={formik.values.resultSummary}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className="form-input textarea-input"
+            />
+            {formik.touched.resultSummary && formik.errors.resultSummary && (
+              <div className="error-message">{formik.errors.resultSummary}</div>
+            )}
+          </div>
 
-        <div>
-          <label>
+          <div className="form-group checkbox-group">
             <input
               type="checkbox"
+              id="sentToLab"
               name="sentToLab"
               checked={formik.values.sentToLab}
               onChange={formik.handleChange}
-              className="mr-2"
+              className="form-checkbox"
             />
-            Sent to Lab
-          </label>
-        </div>
+            <label htmlFor="sentToLab" className="form-label-inline">Sent to Lab</label>
+          </div>
 
-        <div>
-          <label>Report Date:</label>
-          <input
-            type="date"
-            name="reportDate"
-            value={formik.values.reportDate}
-            onChange={formik.handleChange}
-            className="block w-full p-2 border border-gray-300 rounded"
-          />
-        </div>
+          <div className="form-group">
+            <label htmlFor="reportDate" className="form-label">Report Date:</label>
+            <input
+              type="date"
+              id="reportDate"
+              name="reportDate"
+              value={formik.values.reportDate}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className="form-input"
+            />
+            {formik.touched.reportDate && formik.errors.reportDate && (
+              <div className="error-message">{formik.errors.reportDate}</div>
+            )}
+          </div>
 
-        <div>
-          <label>Lab Technician:</label>
-          <input
-            type="text"
-            name="labTechnician"
-            value={formik.values.labTechnician}
-            onChange={formik.handleChange}
-            className="block w-full p-2 border border-gray-300 rounded"
-          />
-        </div>
+          <div className="form-group">
+            <label htmlFor="labTechnician" className="form-label">Lab Technician:</label>
+            <input
+              type="text"
+              id="labTechnician"
+              name="labTechnician"
+              value={formik.values.labTechnician}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className="form-input"
+            />
+            {formik.touched.labTechnician && formik.errors.labTechnician && (
+              <div className="error-message">{formik.errors.labTechnician}</div>
+            )}
+          </div>
 
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
-          {editingReportId ? "Update" : "Add"} Lab Report
-        </button>
+          <div className="form-actions">
+            <button type="submit" className="submit-btn">
+              {editingReportId ? "Update" : "Add"} Lab Report
+            </button>
 
-        {editingReportId && (
-          <button
-            type="button"
-            onClick={() => {
-              formik.resetForm();
-              setEditingReportId(null);
-            }}
-            className="ml-2 bg-gray-500 text-white px-4 py-2 rounded"
-          >
-            Cancel
-          </button>
-        )}
-      </form>
+            {editingReportId && (
+              <button
+                type="button"
+                onClick={() => {
+                  formik.resetForm();
+                  setEditingReportId(null);
+                }}
+                className="cancel-btn"
+              >
+                Cancel
+              </button>
+            )}
+          </div>
+        </form>
 
-      {/* Table */}
-      <div className="mt-8">
-        <h3 className="text-lg font-semibold mb-2">Lab Reports</h3>
-        <div className="overflow-x-auto">
-          <table className="min-w-full border border-gray-300">
-            <thead className="bg-gray-100">
-              <tr>
-                <th className="border px-4 py-2">Patient</th>
-                <th className="border px-4 py-2">Test Type</th>
-                <th className="border px-4 py-2">Result Summary</th>
-                <th className="border px-4 py-2">Sent to Lab</th>
-                <th className="border px-4 py-2">Technician</th>
-                <th className="border px-4 py-2">Date</th>
-                <th className="border px-4 py-2">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {labReports.map((report) => (
-                <tr key={report.reportId}>
-                  <td className="border px-4 py-2">{report.patient?.fullName || "N/A"}</td>
-                  <td className="border px-4 py-2">{report.testType}</td>
-                  <td className="border px-4 py-2">{report.resultSummary}</td>
-                  <td className="border px-4 py-2">{report.sentToLab ? "Yes" : "No"}</td>
-                  <td className="border px-4 py-2">{report.labTechnician}</td>
-                  <td className="border px-4 py-2">{report.reportDate}</td>
-                  <td className="border px-4 py-2 space-x-2">
-                    <button
-                      onClick={() => handleEdit(report)}
-                      className="bg-yellow-500 text-white px-2 py-1 rounded"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      onClick={() => handleDelete(report.reportId)}
-                      className="bg-red-500 text-white px-2 py-1 rounded"
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-              {labReports.length === 0 && (
+        <hr className="divider" />
+
+        <div className="lab-reports-list-section">
+          <h3 className="list-title">Existing Lab Reports</h3>
+          <div className="table-scroll-wrapper">
+            <table className="lab-reports-table"></table>
+            <table className="lab-reports-table">
+              <thead className="table-header">
                 <tr>
-                  <td colSpan="7" className="text-center py-4">
-                    No lab reports found.
-                  </td>
+                  <th>Patient</th>
+                  <th>Test Type</th>
+                  <th>Result Summary</th>
+                  <th>Sent to Lab</th>
+                  <th>Technician</th>
+                  <th>Date</th>
+                  <th>Actions</th>
                 </tr>
-              )}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {labReports.map((report) => (
+                  <tr key={report.reportId}>
+                    <td data-label="Patient">{report.patient?.fullName || "N/A"}</td>
+                    <td data-label="Test Type">{report.testType}</td>
+                    <td data-label="Result Summary">{report.resultSummary}</td>
+                    <td data-label="Sent to Lab">{report.sentToLab ? "Yes" : "No"}</td>
+                    <td data-label="Technician">{report.labTechnician}</td>
+                    <td data-label="Date">{report.reportDate}</td>
+                    <td data-label="Actions" className="action-buttons-cell">
+                      <button
+                        onClick={() => handleEdit(report)}
+                        className="edit-btn"
+                      >
+                        Edit
+                      </button>
+                      <button
+                        onClick={() => handleDelete(report.reportId)}
+                        className="delete-btn"
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+                {labReports.length === 0 && (
+                  <tr>
+                    <td colSpan="7" className="no-reports-message">
+                      No lab reports found.
+                    </td>
+                  </tr>
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
       <Footer />

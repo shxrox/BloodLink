@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./NurseNavbar";
 import { getAllLabReports } from "../../../services/labReportService";
 import Footer from '../../Footer';
+import "../../../style/Labdetails.css"; 
 
 const Labdetails = () => {
   const [labReports, setLabReports] = useState([]);
@@ -42,9 +43,12 @@ const Labdetails = () => {
           <title>Detailed Lab Report</title>
           <style>
             body { font-family: Arial, sans-serif; padding: 20px; }
-            h2 { text-align: center; }
+            h2 { text-align: center; color: #c0392b; }
+            p { margin-bottom: 5px; }
+            strong { color: #333; }
             table { width: 100%; border-collapse: collapse; margin-top: 20px; }
             td, th { border: 1px solid #ccc; padding: 8px; text-align: left; }
+            th { background-color: #f0f0f0; }
           </style>
         </head>
         <body>
@@ -71,39 +75,39 @@ const Labdetails = () => {
   };
 
   return (
-    <div>
+    <div className="lab-details-page">
       <Navbar />
-      <div className="p-6">
-  
-        <h1 className="text-2xl font-semibold mb-4">Submitted Lab Reports</h1>
-        <div className="overflow-x-auto mb-10">
-          <table className="min-w-full border border-gray-300">
-            <thead className="bg-gray-100">
+      <div className="lab-details-container">
+
+        <h1 className="lab-details-title">Submitted Lab Reports</h1>
+        <div className="table-scroll-wrapper mb-10">
+          <table className="lab-reports-table">
+            <thead className="table-header">
               <tr>
-                <th className="border px-4 py-2">Patient</th>
-                <th className="border px-4 py-2">Test Type</th>
-                <th className="border px-4 py-2">Result Summary</th>
-                <th className="border px-4 py-2">Sent to Lab</th>
-                <th className="border px-4 py-2">Technician</th>
-                <th className="border px-4 py-2">Date</th>
+                <th>Patient</th>
+                <th>Test Type</th>
+                <th>Result Summary</th>
+                <th>Sent to Lab</th>
+                <th>Technician</th>
+                <th>Date</th>
               </tr>
             </thead>
             <tbody>
               {labReports.length === 0 ? (
                 <tr>
-                  <td colSpan="6" className="text-center py-4 text-gray-500">
+                  <td colSpan="6" className="text-center-message">
                     No lab reports available.
                   </td>
                 </tr>
               ) : (
                 labReports.map((report) => (
                   <tr key={report.reportId}>
-                    <td className="border px-4 py-2">{report.patient?.fullName || "N/A"}</td>
-                    <td className="border px-4 py-2">{report.testType}</td>
-                    <td className="border px-4 py-2">{report.resultSummary}</td>
-                    <td className="border px-4 py-2">{report.sentToLab ? "Yes" : "No"}</td>
-                    <td className="border px-4 py-2">{report.labTechnician}</td>
-                    <td className="border px-4 py-2">{report.reportDate}</td>
+                    <td data-label="Patient">{report.patient?.fullName || "N/A"}</td>
+                    <td data-label="Test Type">{report.testType}</td>
+                    <td data-label="Result Summary">{report.resultSummary}</td>
+                    <td data-label="Sent to Lab">{report.sentToLab ? "Yes" : "No"}</td>
+                    <td data-label="Technician">{report.labTechnician}</td>
+                    <td data-label="Date">{report.reportDate}</td>
                   </tr>
                 ))
               )}
@@ -112,40 +116,40 @@ const Labdetails = () => {
         </div>
 
         {/* Detailed Lab Reports Table */}
-        <h2 className="text-2xl font-semibold mb-4">Detailed Lab Reports</h2>
-        <div className="overflow-x-auto">
-          <table className="min-w-full border border-gray-300">
-            <thead className="bg-gray-100">
+        <h2 className="lab-details-subtitle">Detailed Lab Reports</h2>
+        <div className="table-scroll-wrapper">
+          <table className="detailed-lab-reports-table">
+            <thead className="table-header">
               <tr>
-                <th className="border px-4 py-2">Patient</th>
-                <th className="border px-4 py-2">Platelet</th>
-                <th className="border px-4 py-2">Hemoglobin</th>
-                <th className="border px-4 py-2">WBC</th>
-                <th className="border px-4 py-2">RBC</th>
-                <th className="border px-4 py-2">Notes</th>
-                <th className="border px-4 py-2">Print</th>
+                <th>Patient</th>
+                <th>Platelet</th>
+                <th>Hemoglobin</th>
+                <th>WBC</th>
+                <th>RBC</th>
+                <th>Notes</th>
+                <th>Print</th>
               </tr>
             </thead>
             <tbody>
               {detailedReports.length === 0 ? (
                 <tr>
-                  <td colSpan="7" className="text-center py-4 text-gray-500">
+                  <td colSpan="7" className="text-center-message">
                     No detailed reports available.
                   </td>
                 </tr>
               ) : (
                 detailedReports.map((detail, index) => (
                   <tr key={index}>
-                    <td className="border px-4 py-2">{detail.labReport?.patient?.fullName || "N/A"}</td>
-                    <td className="border px-4 py-2">{detail.plateletCount}</td>
-                    <td className="border px-4 py-2">{detail.hemoglobinLevel}</td>
-                    <td className="border px-4 py-2">{detail.wbcCount}</td>
-                    <td className="border px-4 py-2">{detail.rbcCount}</td>
-                    <td className="border px-4 py-2">{detail.notes}</td>
-                    <td className="border px-4 py-2 text-center">
+                    <td data-label="Patient">{detail.labReport?.patient?.fullName || "N/A"}</td>
+                    <td data-label="Platelet">{detail.plateletCount}</td>
+                    <td data-label="Hemoglobin">{detail.hemoglobinLevel}</td>
+                    <td data-label="WBC">{detail.wbcCount}</td>
+                    <td data-label="RBC">{detail.rbcCount}</td>
+                    <td data-label="Notes">{detail.notes}</td>
+                    <td data-label="Print" className="print-button-cell">
                       <button
                         onClick={() => handlePrint(detail)}
-                        className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
+                        className="print-btn"
                       >
                         Print
                       </button>

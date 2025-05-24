@@ -2,9 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { addRegistration } from "../services/RegistrationAPI";
-import '../style/registrationForm.css';
-
-
+import '../style/registrationForm.css'; 
 
 const validationSchema = Yup.object({
   name: Yup.string().required("Name is required"),
@@ -31,150 +29,131 @@ const RegistrationForm = () => {
       mobile_num: "",
       password: "",
       confirmPassword: "",
-      role: "NURSE",
+      role: "NURSE", 
     },
     validationSchema: validationSchema,
     onSubmit: async (values) => {
       try {
-
         await addRegistration(values);
-
-        alert("Registration successful!");
-
-
-        navigate("/");
+        alert("Registration successful! You can now log in.");
+        navigate("/login"); 
       } catch (error) {
-        
-        alert("Registration failed. Please try again.");
+        console.error("Registration failed:", error);
+        alert("Registration failed. Please try again. (Email might already be registered)");
       }
     },
   });
 
   return (
-    <>
-      <h1>BloodLink Registration</h1>
-      <form onSubmit={formik.handleSubmit}>
-        <div className="error">
-          <input
-            type="text"
-            name="name"
-            placeholder="Name"
-            value={formik.values.name}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          {formik.touched.name && formik.errors.name && (
-            <div>{formik.errors.name}</div>
-          )}
-        </div>
+    <div className="registration-page">
+      <div className="registration-container">
+        <h1 className="registration-title">BloodLink Registration</h1>
+        <form onSubmit={formik.handleSubmit} className="registration-form">
+          <div className="form-group">
+            <input
+              type="text"
+              name="name"
+              placeholder="Full Name"
+              value={formik.values.name}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className={`form-input ${formik.touched.name && formik.errors.name ? 'input-error' : ''}`}
+            />
+            {formik.touched.name && formik.errors.name && (
+              <div className="error-message">{formik.errors.name}</div>
+            )}
+          </div>
 
-        <div className="error">
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formik.values.email}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          {formik.touched.email && formik.errors.email && (
-            <div>{formik.errors.email}</div>
-          )}
-        </div>
+          <div className="form-group">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className={`form-input ${formik.touched.email && formik.errors.email ? 'input-error' : ''}`}
+            />
+            {formik.touched.email && formik.errors.email && (
+              <div className="error-message">{formik.errors.email}</div>
+            )}
+          </div>
 
-        <div className="error">
-          <input
-            type="text"
-            name="mobile_num"
-            placeholder="Mobile Number"
-            value={formik.values.mobile_num}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          {formik.touched.mobile_num && formik.errors.mobile_num && (
-            <div>{formik.errors.mobile_num}</div>
-          )}
-        </div>
+          <div className="form-group">
+            <input
+              type="text"
+              name="mobile_num"
+              placeholder="Mobile Number (e.g., 0712345678)"
+              value={formik.values.mobile_num}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className={`form-input ${formik.touched.mobile_num && formik.errors.mobile_num ? 'input-error' : ''}`}
+            />
+            {formik.touched.mobile_num && formik.errors.mobile_num && (
+              <div className="error-message">{formik.errors.mobile_num}</div>
+            )}
+          </div>
 
-        <div className="error">
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={formik.values.password}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          {formik.touched.password && formik.errors.password && (
-            <div>{formik.errors.password}</div>
-          )}
-        </div>
+          <div className="form-group">
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              value={formik.values.password}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className={`form-input ${formik.touched.password && formik.errors.password ? 'input-error' : ''}`}
+            />
+            {formik.touched.password && formik.errors.password && (
+              <div className="error-message">{formik.errors.password}</div>
+            )}
+          </div>
 
-        <div className="error">
-          <input
+          <div className="form-group">
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              value={formik.values.confirmPassword}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className={`form-input ${formik.touched.confirmPassword && formik.errors.confirmPassword ? 'input-error' : ''}`}
+            />
+            {formik.touched.confirmPassword && formik.errors.confirmPassword && (
+              <div className="error-message">{formik.errors.confirmPassword}</div>
+            )}
+          </div>
 
-            type="password"
-            name="confirmPassword"
-            placeholder="Confirm Password"
-            value={formik.values.confirmPassword}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          />
-          {formik.touched.confirmPassword && formik.errors.confirmPassword && (
-            <div>{formik.errors.confirmPassword}</div>
-          )}
-        </div>
+          <div className="form-group">
+            <label htmlFor="role" className="form-label">Registering as:</label>
+            <select
+              id="role"
+              name="role"
+              value={formik.values.role}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              className={`form-select ${formik.touched.role && formik.errors.role ? 'input-error' : ''}`}
+            >
+              <option value="NURSE">Nurse</option>
+              <option value="DOCTOR">Doctor</option>
+              <option value="LABTECH">Lab Technician</option>
+            </select>
+            {formik.touched.role && formik.errors.role && (
+              <div className="error-message">{formik.errors.role}</div>
+            )}
+          </div>
 
-        <div>
-          <select
-            name="role"
-            value={formik.values.role}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-          >
-            <option value="NURSE">Nurse</option>
-            <option value="DOCTOR">Doctor</option>
-            <option value="LABTECH">Lab Technician</option>
-          </select>
-          {formik.touched.role && formik.errors.role && (
-            <div>{formik.errors.role}</div>
-          )}
-        </div>
+          <div className="form-actions">
+            <button type="submit" className="register-btn">Register</button>
+            <button type="button" onClick={formik.resetForm} className="clear-btn">Clear</button>
+          </div>
+        </form>
 
-       
-<div>
-  <button
-    type="button"
-    onClick={async () => {
-      const isValid = await formik.validateForm();
-      formik.setTouched({
-        name: true,
-        email: true,
-        mobile_num: true,
-        password: true,
-        confirmPassword: true,
-        role: true,
-      });
-
-      if (Object.keys(isValid).length === 0) {
-        try {
-          await addRegistration(formik.values);
-          alert("Registration successful!");
-          navigate("/login");
-        } catch (error) {
-          alert("Registration failed. Please try again.");
-        }
-      }
-    }}
-  >
-    Register
-  </button>
-
-  <button type="button" onClick={() => formik.resetForm()}>Clear</button>
-</div>
-
-      </form>
-    </>
+        <p className="login-prompt">
+          Already have an account? <span className="login-link" onClick={() => navigate("/login")}>Login here</span>
+        </p>
+      </div>
+    </div>
   );
 };
 

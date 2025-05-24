@@ -3,6 +3,8 @@ import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import "../style/login.css"; 
+
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -26,7 +28,7 @@ const LoginForm = () => {
         const response = await axios.post("http://localhost:8080/auth/login", values);
         const message = response.data;
 
-        alert(message);
+        alert(message); 
 
         if (message.includes("Nurse")) {
           navigate("/dashboard/nurse");
@@ -35,6 +37,7 @@ const LoginForm = () => {
         } else if (message.includes("Lab Technician")) {
           navigate("/dashboard/lab");
         } else {
+    
           navigate("/");
         }
       } catch (err) {
@@ -48,41 +51,52 @@ const LoginForm = () => {
   });
 
   return (
-    <div>
-      <h1>Login to BloodLink</h1>
-      <form onSubmit={formik.handleSubmit}>
-        <div>
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.email}
-          />
-          {formik.touched.email && formik.errors.email && (
-            <p style={{ color: "red" }}>{formik.errors.email}</p>
-          )}
-        </div>
+    <div className="login-page">
+      <div className="login-container">
+        <h1 className="login-title">Login to BloodLink</h1>
+        <form onSubmit={formik.handleSubmit} className="login-form">
+          <div className="form-group">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
+              className={`form-input ${formik.touched.email && formik.errors.email ? 'input-error' : ''}`}
+            />
+            {formik.touched.email && formik.errors.email && (
+              <p className="error-message">{formik.errors.email}</p>
+            )}
+          </div>
 
-        <div>
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
-            value={formik.values.password}
-          />
-          {formik.touched.password && formik.errors.password && (
-            <p style={{ color: "red" }}>{formik.errors.password}</p>
-          )}
-        </div>
+          <div className="form-group">
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+              className={`form-input ${formik.touched.password && formik.errors.password ? 'input-error' : ''}`}
+            />
+            {formik.touched.password && formik.errors.password && (
+              <p className="error-message">{formik.errors.password}</p>
+            )}
+          </div>
 
-        {error && <p style={{ color: "red" }}>{error}</p>}
+          {error && <p className="api-error-message">{error}</p>}
 
-        <button type="submit">Login</button>
-      </form>
+          <button type="submit" className="login-btn">Login</button>
+        </form>
+
+        <p className="register-prompt">
+          Don't have an account?{" "}
+          <span className="register-link" onClick={() => navigate("/registration")}>
+            Register here
+          </span>
+        </p>
+      </div>
     </div>
   );
 };
