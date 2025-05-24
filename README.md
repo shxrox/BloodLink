@@ -78,4 +78,4 @@ This integration would transform BloodLink into a proactive, intelligent system,
 
 For a comprehensive understanding of the project's design, architecture, and implementation details, you can download the full project documentation directly from the backend repository:
 
-[Download Project Document](BloodLink-backend/Document%20About%20Project)
+[Download Project Document](BloodLink-backend/Project Details.docx)
