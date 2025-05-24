@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getPatients, deletePatient } from '../../../services/patientsregAPI';
 import Navbar from "./DoctorNavbar";
 import Footer from '../../Footer';
+import '../../../docstyle/PatientDetails.css';
 
 
 const PatientDetails = () => {
@@ -22,11 +23,15 @@ const PatientDetails = () => {
   };
 
   const handleDeletePatient = async (id) => {
-    try {
-      await deletePatient(id);
-      setPatients(patients.filter(patient => patient.patientId !== id));
-    } catch (error) {
-      console.error('Error deleting patient:', error);
+    if (window.confirm("Are you sure you want to delete this patient record?")) {
+      try {
+        await deletePatient(id);
+        setPatients(patients.filter(patient => patient.patientId !== id));
+        alert("Patient record deleted successfully!");
+      } catch (error) {
+        console.error('Error deleting patient:', error);
+        alert("Failed to delete patient record.");
+      }
     }
   };
 
@@ -34,7 +39,6 @@ const PatientDetails = () => {
     console.log("Edit patient ID:", id);
   };
 
-  
   const filteredPatients = patients.filter((patient) =>
     patient.fullName.toLowerCase().includes(searchTerm.toLowerCase()) ||
     patient.nationalId.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -43,71 +47,77 @@ const PatientDetails = () => {
   );
 
   return (
-    <div>
+    <div className="patient-details-page">
       <Navbar />
-      <h1 style={{ textAlign: 'center', color: '#4CAF50' }}>Welcome to Patient Details</h1>
+      <div className="patient-details-container">
+        <h1 className="main-title">Patient Details</h1>
 
-      <div style={{ textAlign: 'center', marginTop: '20px' }}>
-        <input
-          type="text"
-          placeholder="Search by name, NIC, email or phone"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          style={{
-            padding: '8px',
-            width: '300px',
-            border: '1px solid #ccc',
-            borderRadius: '4px'
-          }}
-        />
+        <div className="search-bar-container">
+          <input
+            type="text"
+            placeholder="Search by name, NIC, email or phone"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
+          />
+        </div>
+
+        <div className="table-wrapper">
+          <table className="patient-table">
+            <thead>
+              <tr>
+                <th>Full Name</th>
+                <th>Date of Birth</th>
+                <th>Gender</th>
+                <th>NIC</th>
+                <th>Blood Group</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Medical Conditions</th>
+                <th>Allergies</th>
+                <th>Current Medications</th>
+                <th>Medical History</th>
+                <th>Emergency Contact Name</th>
+                <th>Emergency Relationship</th>
+                <th>Emergency Phone</th>
+                <th>Registration Date</th>
+                <th>Created By</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredPatients.length === 0 ? (
+                <tr>
+                  <td colSpan="17" className="no-patients-message">No patients found.</td>
+                </tr>
+              ) : (
+                filteredPatients.map((patient) => (
+                  <tr key={patient.patientId}>
+                    <td data-label="Full Name">{patient.fullName}</td>
+                    <td data-label="Date of Birth">{patient.dateOfBirth}</td>
+                    <td data-label="Gender">{patient.gender}</td>
+                    <td data-label="NIC">{patient.nationalId}</td>
+                    <td data-label="Blood Group">{patient.bloodGroup}</td>
+                    <td data-label="Phone">{patient.phoneNumber}</td>
+                    <td data-label="Email">{patient.email}</td>
+                    <td data-label="Address">{patient.address}</td>
+                    <td data-label="Medical Conditions">{patient.medicalConditions}</td>
+                    <td data-label="Allergies">{patient.allergies}</td>
+                    <td data-label="Current Medications">{patient.currentMedications}</td>
+                    <td data-label="Medical History">{patient.medicalHistory}</td>
+                    <td data-label="Emergency Contact Name">{patient.emergencyContactName}</td>
+                    <td data-label="Emergency Relationship">{patient.emergencyContactRelationship}</td>
+                    <td data-label="Emergency Phone">{patient.emergencyContactPhone}</td>
+                    <td data-label="Registration Date">{patient.registrationDate}</td>
+                    <td data-label="Created By">{patient.createdBy}</td>
+               
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
-
-      <table border="1" style={{ width: '100%', borderCollapse: 'collapse', marginTop: '20px' }}>
-        <thead>
-          <tr>
-            <th>Full Name</th>
-            <th>Date of Birth</th>
-            <th>Gender</th>
-            <th>NIC</th>
-            <th>Blood Group</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>Address</th>
-            <th>Medical Conditions</th>
-            <th>Allergies</th>
-            <th>Current Medications</th>
-            <th>Medical History</th>
-            <th>Emergency Contact Name</th>
-            <th>Emergency Relationship</th>
-            <th>Emergency Phone</th>
-            <th>Registration Date</th>
-            <th>Created By</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredPatients.map((patient) => (
-            <tr key={patient.patientId}>
-              <td>{patient.fullName}</td>
-              <td>{patient.dateOfBirth}</td>
-              <td>{patient.gender}</td>
-              <td>{patient.nationalId}</td>
-              <td>{patient.bloodGroup}</td>
-              <td>{patient.phoneNumber}</td>
-              <td>{patient.email}</td>
-              <td>{patient.address}</td>
-              <td>{patient.medicalConditions}</td>
-              <td>{patient.allergies}</td>
-              <td>{patient.currentMedications}</td>
-              <td>{patient.medicalHistory}</td>
-              <td>{patient.emergencyContactName}</td>
-              <td>{patient.emergencyContactRelationship}</td>
-              <td>{patient.emergencyContactPhone}</td>
-              <td>{patient.registrationDate}</td>
-              <td>{patient.createdBy}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
       <Footer />
     </div>
   );

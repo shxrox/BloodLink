@@ -1,45 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaUserPlus } from "react-icons/fa";
+import '../../../docstyle/navbar.css'; 
+import logo from "../../../assets/logo.png";
 
-const NurseNavbar = () => {
+const DocNavbar = () => {
   return (
-    <nav style={styles.navbar}>
-      <div>
-        <Link to="/dashboard/doctor" style={styles.link}>Home</Link>
-        <Link to="/dashboard/doctor/patient-details" style={styles.link}>patient details</Link>
-        <Link to="/dashboard/doctor/petient-cheking" style={styles.link}>patient check up details</Link>
-        <Link to="/dashboard/doctor/petient-description" style={styles.link}>patient description</Link>
-        <Link to="/dashboard/doctor/petient-medicine" style={styles.link}>patient medicine</Link>
-        <Link to="/dashboard/doctor/about" style={styles.link}>about</Link>
-        <Link to="/dashboard/doctor/staff" style={styles.link}>staff</Link>
+    <nav className="navbar">
+      <div className="navbar-content">
+             <Link to="/dashboard/doctor" className="navbar-logo-link" onClick={() => setMenuOpen(false)}>
+                 <img src={logo} alt="Logo" className="navbar-logo" />
+               </Link>
 
-  <div style={styles.registerIcon}>
-  <Link to="/registration" style={{ color: "white", textDecoration: "none" }} title="Register">
-    <FaUserPlus size={20} />
-  </Link>
-</div>
+        <div className="navbar-links">
+          <Link to="/dashboard/doctor" className="nav-link">Home</Link>
+          <Link to="/dashboard/doctor/patient-details" className="nav-link">Patient Details</Link>
+          <Link to="/dashboard/doctor/petient-cheking" className="nav-link">Patient Check Up</Link>
+          <Link to="/dashboard/doctor/petient-description" className="nav-link">Patient Description</Link>
+          <Link to="/dashboard/doctor/petient-medicine" className="nav-link">Patient Medicine</Link>
+          <Link to="/dashboard/doctor/about" className="nav-link">About</Link>
+          <Link to="/dashboard/doctor/staff" className="nav-link">Staff</Link>
+        </div>
 
-        
-        <Link to="/login" style={styles.link}>Logout</Link>
+        <div className="navbar-actions">
+
+          <Link to="/login" className="nav-link logout-link">Logout</Link>
+        </div>
       </div>
     </nav>
   );
 };
 
-const styles = {
-  navbar: {
-    backgroundColor: "green",
-    padding: "10px",
-    display: "flex",
-    justifyContent: "center",
-  },
-  link: {
-    margin: "0 15px",
-    color: "white",
-    textDecoration: "none",
-    fontWeight: "bold",
-  }
-};
-
-export default NurseNavbar;
+export default DocNavbar;

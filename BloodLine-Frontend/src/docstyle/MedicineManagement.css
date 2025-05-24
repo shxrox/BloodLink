@@ -1,0 +1,315 @@
+.medicine-management-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #343a40;
+}
+
+.medicine-management-container {
+  flex-grow: 1;
+  width: 100%;
+  margin: 0;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.main-title {
+  text-align: center;
+  color: #c0392b;
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.form-section {
+  background-color: #fdfdfd;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+  border-left: 5px solid #c0392b;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-section-title {
+  color: #495057;
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.form-elements-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-elements-group select,
+.form-elements-group input[type="text"] {
+  flex: 1 1 auto;
+  padding: 12px 15px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-size: 1rem;
+  min-width: 180px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-elements-group select:focus,
+.form-elements-group input[type="text"]:focus {
+  border-color: #c0392b;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.2);
+  outline: none;
+}
+
+.form-elements-group button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  white-space: nowrap;
+}
+
+.form-elements-group button:first-of-type {
+  background-color: #c0392b;
+  color: white;
+}
+
+.form-elements-group button:first-of-type:hover {
+  background-color: #a53023;
+  transform: translateY(-1px);
+}
+
+.form-elements-group button:last-of-type {
+  background-color: #6c757d;
+  color: white;
+}
+
+.form-elements-group button:last-of-type:hover {
+  background-color: #5a6268;
+  transform: translateY(-1px);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: 20px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.medicines-table {
+  width: 100%;
+  min-width: 700px; /* Adjust as needed for content */
+  border-collapse: collapse;
+}
+
+.medicines-table thead {
+  background-color: #f0f2f5;
+}
+
+.medicines-table th,
+.medicines-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e9ecef;
+  white-space: nowrap;
+}
+
+.medicines-table th {
+  color: #495057;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.medicines-table tbody tr:nth-child(even) {
+  background-color: #fcfcfc;
+}
+
+.medicines-table tbody tr:hover {
+  background-color: #eef2f5;
+  transition: background-color 0.2s ease;
+}
+
+.medicines-table td {
+  color: #343a40;
+  font-size: 0.95rem;
+}
+
+.action-buttons-cell button {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  margin: 0 4px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.action-buttons-cell .edit-btn {
+  background-color: #ffc107;
+  color: #343a40;
+}
+
+.action-buttons-cell .edit-btn:hover {
+  background-color: #e0a800;
+  transform: translateY(-1px);
+}
+
+.action-buttons-cell .delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.action-buttons-cell .delete-btn:hover {
+  background-color: #c82333;
+  transform: translateY(-1px);
+}
+
+.no-data-message {
+  text-align: center;
+  padding: 20px;
+  color: #6c757d;
+  font-style: italic;
+}
+
+
+@media (max-width: 992px) {
+  .medicine-management-container {
+    padding: 15px;
+  }
+
+  .main-title {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+  }
+
+  .form-section {
+    padding: 20px;
+  }
+
+  .form-section-title {
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+  }
+
+  .form-elements-group select,
+  .form-elements-group input[type="text"],
+  .form-elements-group button {
+    font-size: 0.95rem;
+    padding: 10px 12px;
+  }
+
+  .medicines-table {
+    min-width: 600px;
+  }
+
+  .medicines-table th,
+  .medicines-table td {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .medicine-management-container {
+    padding: 10px;
+  }
+
+  .main-title {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+  }
+
+  .form-section {
+    padding: 15px;
+  }
+
+  .form-section-title {
+    font-size: 1.4rem;
+  }
+
+  .form-elements-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .form-elements-group select,
+  .form-elements-group input[type="text"],
+  .form-elements-group button {
+    width: 100%;
+    min-width: unset;
+    margin-bottom: 10px;
+  }
+
+  .medicines-table {
+    min-width: 500px;
+  }
+
+  .medicines-table th,
+  .medicines-table td {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+
+  .action-buttons-cell button {
+    padding: 6px 10px;
+    font-size: 0.75rem;
+    margin: 2px;
+  }
+}
+
+@media (max-width: 576px) {
+  .medicine-management-container {
+    padding: 5px;
+  }
+
+  .main-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  .form-section {
+    padding: 10px;
+  }
+
+  .form-section-title {
+    font-size: 1.2rem;
+  }
+
+  .form-elements-group select,
+  .form-elements-group input[type="text"],
+  .form-elements-group button {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+
+  .medicines-table {
+    min-width: 350px;
+  }
+
+  .medicines-table th,
+  .medicines-table td {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+}

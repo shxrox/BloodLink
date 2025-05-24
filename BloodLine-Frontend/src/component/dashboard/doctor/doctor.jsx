@@ -3,10 +3,16 @@ import Navbar from "./DoctorNavbar";
 import { getRegistrations } from "../../../services/RegistrationAPI";
 import MedicineService from "../../../services/medicineService";
 import DoctorDescriptionService from "../../../services/doctorDescriptionService";
-import { PieChart, Pie, Cell, Tooltip, Legend, BarChart, Bar, XAxis, YAxis, LineChart, Line, CartesianGrid } from "recharts";
+import {
+  PieChart, Pie, Cell, Tooltip, Legend,
+  BarChart, Bar, XAxis, YAxis, LineChart, Line, CartesianGrid, ResponsiveContainer
+} from "recharts";
 import Footer from '../../Footer';
+import '../../../docstyle/doctor.css';
 
-const doctor = () => {
+const COLORS = ["#DC3545", "#FF6347", "#CD5C5C", "#A52A2A", "#8B0000", "#B22222"];
+
+const DoctorDashboard = () => {
   const [accounts, setAccounts] = useState([]);
   const [medicines, setMedicines] = useState([]);
   const [doctorDescriptions, setDoctorDescriptions] = useState([]);
@@ -72,9 +78,6 @@ const doctor = () => {
     { name: "Lab Techs", value: roleCounts.labtechs },
   ];
 
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28"];
-
-
   const medicineCountByPatient = medicines.reduce((acc, med) => {
     const name = med.patient?.fullName || "Unknown";
     acc[name] = (acc[name] || 0) + 1;
@@ -86,18 +89,15 @@ const doctor = () => {
     count,
   }));
 
-
   const descCountByDate = doctorDescriptions.reduce((acc, desc) => {
     const date = desc.date?.slice(0, 10) || "Unknown";
     acc[date] = (acc[date] || 0) + 1;
     return acc;
   }, {});
 
-
   const lineData = Object.entries(descCountByDate)
     .map(([date, count]) => ({ date, count }))
     .sort((a, b) => new Date(a.date) - new Date(b.date));
-
 
   const labSentCount = labReports.reduce(
     (acc, report) => {
@@ -114,61 +114,68 @@ const doctor = () => {
   ];
 
   return (
-    <div style={{ padding: "20px" }}>
+    <div className="doctor-dashboard-page">
       <Navbar />
-      <h1>Admin Dashboard - Charts Overview</h1>
+      <div className="dashboard-container">
+        <h1 className="dashboard-main-title">Admin Dashboard - Charts Overview</h1>
 
-      <div style={{ display: "flex", gap: "50px", flexWrap: "wrap" }}>
-     
-        <div style={{ flex: "1 1 400px", textAlign: "center" }}>
-          <h3>User Roles Distribution</h3>
-          <PieChart width={350} height={300}>
-            <Pie data={pieData} cx="50%" cy="50%" outerRadius={100} fill="#8884d8" dataKey="value" label>
-              {pieData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-              ))}
-            </Pie>
-            <Tooltip />
-            <Legend />
-          </PieChart>
-        </div>
+        <div className="charts-grid">
 
-      
-        <div style={{ flex: "1 1 400px", textAlign: "center" }}>
-          <h3>Medicines per Patient</h3>
-          <BarChart width={400} height={300} data={barData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="name" interval={0} angle={-45} textAnchor="end" height={80} />
-            <YAxis allowDecimals={false} />
-            <Tooltip />
-            <Bar dataKey="count" fill="#82ca9d" />
-          </BarChart>
-        </div>
+          <div className="chart-container-item">
+            <h3 className="chart-section-title">User Roles Distribution</h3>
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie data={pieData} cx="50%" cy="50%" outerRadius={100} dataKey="value" label>
+                  {pieData.map((entry, index) => (
+                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
 
-      
-        <div style={{ flex: "1 1 400px", textAlign: "center" }}>
-          <h3>Doctor Descriptions Over Time</h3>
-          <LineChart width={400} height={300} data={lineData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="date" />
-            <YAxis allowDecimals={false} />
-            <Tooltip />
-            <Line type="monotone" dataKey="count" stroke="#8884d8" />
-          </LineChart>
-        </div>
+          <div className="chart-container-item">
+            <h3 className="chart-section-title">Medicines per Patient</h3>
+            <ResponsiveContainer width="100%" height={300}>
+              <BarChart data={barData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" interval={0} angle={-45} textAnchor="end" height={80} />
+                <YAxis allowDecimals={false} />
+                <Tooltip />
+                <Bar dataKey="count" fill="#DC3545" />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
 
-        {/* Pie Chart: Lab Reports Sent vs Not */}
-        <div style={{ flex: "1 1 400px", textAlign: "center" }}>
-          <h3>Lab Reports Sent Status</h3>
-          <PieChart width={350} height={300}>
-            <Pie data={labPieData} cx="50%" cy="50%" outerRadius={100} fill="#8884d8" dataKey="value" label>
-              {labPieData.map((entry, index) => (
-                <Cell key={`cell-lab-${index}`} fill={COLORS[index % COLORS.length]} />
-              ))}
-            </Pie>
-            <Tooltip />
-            <Legend />
-          </PieChart>
+          <div className="chart-container-item">
+            <h3 className="chart-section-title">Doctor Descriptions Over Time</h3>
+            <ResponsiveContainer width="100%" height={300}>
+              <LineChart data={lineData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="date" />
+                <YAxis allowDecimals={false} />
+                <Tooltip />
+                <Line type="monotone" dataKey="count" stroke="#DC3545" />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
+
+          <div className="chart-container-item">
+            <h3 className="chart-section-title">Lab Reports Sent Status</h3>
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie data={labPieData} cx="50%" cy="50%" outerRadius={100} dataKey="value" label>
+                  {labPieData.map((entry, index) => (
+                    <Cell key={`cell-lab-${index}`} fill={COLORS[index % COLORS.length]} />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </div>
       <Footer />
@@ -176,4 +183,4 @@ const doctor = () => {
   );
 };
 
-export default doctor;
+export default DoctorDashboard;

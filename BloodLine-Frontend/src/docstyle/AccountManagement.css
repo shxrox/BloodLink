@@ -1,0 +1,174 @@
+.account-management-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #343a40;
+}
+
+.account-management-container {
+  flex-grow: 1;
+  width: 100%;
+  margin: 0;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.main-title {
+  text-align: center;
+  color: #c0392b;
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.section-container {
+  margin-bottom: 40px;
+}
+
+.section-title {
+  color: #495057;
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #ced4da;
+  text-align: left;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: 15px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+}
+
+.accounts-table {
+  width: 100%;
+  min-width: 600px; /* Adjust as needed for content */
+  border-collapse: collapse;
+}
+
+.accounts-table thead {
+  background-color: #f0f2f5;
+}
+
+.accounts-table th,
+.accounts-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e9ecef;
+  white-space: nowrap;
+}
+
+.accounts-table th {
+  color: #495057;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.accounts-table tbody tr:nth-child(even) {
+  background-color: #fcfcfc;
+}
+
+.accounts-table tbody tr:hover {
+  background-color: #eef2f5;
+  transition: background-color 0.2s ease;
+}
+
+.accounts-table td {
+  color: #343a40;
+  font-size: 0.95rem;
+}
+
+.no-accounts-message {
+  text-align: center;
+  padding: 20px;
+  color: #6c757d;
+  font-style: italic;
+}
+
+@media (max-width: 992px) {
+  .account-management-container {
+    padding: 15px;
+  }
+
+  .main-title {
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+  }
+
+  .accounts-table {
+    min-width: 500px;
+  }
+
+  .accounts-table th,
+  .accounts-table td {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .account-management-container {
+    padding: 10px;
+  }
+
+  .main-title {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  .accounts-table {
+    min-width: 400px;
+  }
+
+  .accounts-table th,
+  .accounts-table td {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .account-management-container {
+    padding: 5px;
+  }
+
+  .main-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .accounts-table {
+    min-width: 300px;
+  }
+
+  .accounts-table th,
+  .accounts-table td {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+}
