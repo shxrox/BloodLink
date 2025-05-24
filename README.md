@@ -71,3 +71,11 @@ The vision for BloodLink includes integrating an **AI agent** to enhance its cap
 * Provide patients with real-time answers to common questions.
 
 This integration would transform BloodLink into a proactive, intelligent system, significantly improving efficiency and patient care.
+
+---
+
+## 📄 Project Documentation
+
+For a comprehensive understanding of the project's design, architecture, and implementation details, you can download the full project documentation directly from the backend repository:
+
+[Download Project Document](BloodLink-backend/Document%20About%20Project)
