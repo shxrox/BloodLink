@@ -6,6 +6,7 @@
 
 **BloodLink** is a digital health system designed to modernize hospital operations, significantly reduce patient waiting times, and streamline the management of patient records and lab results. Inspired by the inefficiencies of traditional manual systems in hospitals, BloodLink aims to create a smoother, more efficient experience for both patients and healthcare professionals.
 
+# ![BloodLink Logo](BloodLine-Frontend/src/assets/logo.png)
 ---
 
 ## ✨ Key Features
