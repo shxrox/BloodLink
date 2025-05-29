@@ -117,7 +117,7 @@ const DoctorDashboard = () => {
     <div className="doctor-dashboard-page">
       <Navbar />
       <div className="dashboard-container">
-        <h1 className="dashboard-main-title">Admin Dashboard - Charts Overview</h1>
+        <h1 className="dashboard-main-title">Doctor Dashboard - Charts Overview</h1>
 
         <div className="charts-grid">
 
