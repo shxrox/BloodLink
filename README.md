@@ -55,8 +55,8 @@ src/
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/BloodLink-Frontend.git
-   cd BloodLine-Frontend
+   git clone https://github.com/shxrox/BloodLink.git
+   cd BloodLine
    ```
 
 2. **Install dependencies:**
