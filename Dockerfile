@@ -2,6 +2,10 @@
 FROM eclipse-temurin:21-jdk as build
 WORKDIR /app
 COPY . .
+
+# FIX: Give permission to the maven wrapper
+RUN chmod +x mvnw
+
 # Build the application
 RUN ./mvnw clean package -DskipTests
 
