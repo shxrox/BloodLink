@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const url = "http://localhost:8080/registration";
+// const url = "http://localhost:8080/registration";
+const url = "https://bloodlink-rwls.onrender.com/registration"; 
 
 export const getRegistrations = async () => {
     const response = await axios.get(url);
