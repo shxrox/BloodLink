@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8080/api/medicines';
+// const BASE_URL = 'http://localhost:8080/api/medicines';
+const BASE_URL = 'https://bloodlink-rwls.onrender.com/api/medicines';
 
 const MedicineService = {
   addMedicine: (patientId, medicine) => {

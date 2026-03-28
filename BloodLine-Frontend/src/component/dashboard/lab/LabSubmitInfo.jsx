@@ -9,7 +9,8 @@ const LabSubmitInfo = () => {
   const [labReports, setLabReports] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/labreports/all")
+    // Updated to use the live Render backend URL
+    axios.get("https://bloodlink-rwls.onrender.com/api/labreports/all")
       .then((res) => setLabReports(res.data))
       .catch((err) => console.error("Failed to fetch lab reports:", err));
   }, []);

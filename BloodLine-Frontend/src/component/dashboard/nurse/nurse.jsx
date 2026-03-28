@@ -22,14 +22,16 @@ const Nurse = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/labreports/all")
+    // Updated to use the live Render backend URL
+    fetch("https://bloodlink-rwls.onrender.com/api/labreports/all")
       .then(res => res.json())
       .then(data => setLabReports(data))
       .catch(console.error);
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/registrations/all")
+    // Updated to use the live Render backend URL
+    fetch("https://bloodlink-rwls.onrender.com/api/registrations/all")
       .then(res => res.json())
       .then(data => setAccounts(data))
       .catch(console.error);

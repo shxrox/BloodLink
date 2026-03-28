@@ -25,7 +25,8 @@ const LoginForm = () => {
       setError("");
 
       try {
-        const response = await axios.post("http://localhost:8080/auth/login", values);
+        // Updated to use the live Render backend URL
+        const response = await axios.post("https://bloodlink-rwls.onrender.com/auth/login", values);
         const message = response.data;
 
         alert(message); 
@@ -37,7 +38,6 @@ const LoginForm = () => {
         } else if (message.includes("Lab Technician")) {
           navigate("/dashboard/lab");
         } else {
-    
           navigate("/");
         }
       } catch (err) {

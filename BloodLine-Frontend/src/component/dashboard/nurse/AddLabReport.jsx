@@ -13,13 +13,15 @@ const AddLabReport = () => {
   const [editingReportId, setEditingReportId] = useState(null);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/patients")
+    // Updated to use the live Render backend URL
+    axios.get("https://bloodlink-rwls.onrender.com/api/patients")
       .then((res) => setPatients(res.data))
       .catch((err) => console.error("Failed to fetch patients:", err));
   }, []);
 
   const loadLabReports = () => {
-    axios.get("http://localhost:8080/api/labreports/all")
+    // Updated to use the live Render backend URL
+    axios.get("https://bloodlink-rwls.onrender.com/api/labreports/all")
       .then((res) => setLabReports(res.data))
       .catch((err) => console.error("Failed to fetch lab reports:", err));
   };
@@ -47,10 +49,12 @@ const AddLabReport = () => {
     onSubmit: async (values) => {
       try {
         if (editingReportId) {
-          await axios.put(`http://localhost:8080/api/labreports/update/${editingReportId}`, values);
+          // Updated to use the live Render backend URL
+          await axios.put(`https://bloodlink-rwls.onrender.com/api/labreports/update/${editingReportId}`, values);
           alert("Lab report updated successfully!");
         } else {
-          await axios.post(`http://localhost:8080/api/labreports/add/${values.patientId}`, values);
+          // Updated to use the live Render backend URL
+          await axios.post(`https://bloodlink-rwls.onrender.com/api/labreports/add/${values.patientId}`, values);
           alert("Lab report added successfully!");
         }
         formik.resetForm();
@@ -78,7 +82,8 @@ const AddLabReport = () => {
   const handleDelete = async (reportId) => {
     if (window.confirm("Are you sure you want to delete this report?")) {
       try {
-        await axios.delete(`http://localhost:8080/api/labreports/delete/${reportId}`);
+        // Updated to use the live Render backend URL
+        await axios.delete(`https://bloodlink-rwls.onrender.com/api/labreports/delete/${reportId}`);
         alert("Lab report deleted.");
         loadLabReports();
       } catch (error) {
@@ -218,7 +223,6 @@ const AddLabReport = () => {
         <div className="lab-reports-list-section">
           <h3 className="list-title">Existing Lab Reports</h3>
           <div className="table-scroll-wrapper">
-            <table className="lab-reports-table"></table>
             <table className="lab-reports-table">
               <thead className="table-header">
                 <tr>

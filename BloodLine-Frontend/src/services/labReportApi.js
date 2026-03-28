@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const LAB_REPORT_BASE_URL = "http://localhost:8080/api/labreports";
+// const LAB_REPORT_BASE_URL = "http://localhost:8080/api/labreports";
+const LAB_REPORT_BASE_URL = "https://bloodlink-rwls.onrender.com/api/labreports";
 
 
 export const getAllLabReports = async () => {

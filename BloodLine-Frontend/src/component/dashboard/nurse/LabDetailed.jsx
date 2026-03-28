@@ -15,7 +15,8 @@ const Labdetails = () => {
 
   const fetchLabReports = async () => {
     try {
-      const res = await fetch("http://localhost:8080/api/labreports/all");
+      // Updated to use the live Render backend URL
+      const res = await fetch("https://bloodlink-rwls.onrender.com/api/labreports/all");
       const data = await res.json();
       setLabReports(data);
     } catch (error) {

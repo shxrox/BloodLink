@@ -22,7 +22,8 @@ const LabDashboard = () => {
 
   const fetchLabReports = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/labreports/all");
+      // Updated to use the live Render backend URL
+      const res = await axios.get("https://bloodlink-rwls.onrender.com/api/labreports/all");
       setLabReports(res.data);
       processData(res.data);
     } catch (error) {

@@ -33,7 +33,7 @@ const MedicineManagement = () => {
 
   const fetchPatients = async () => {
     try {
-      const response = await axios.get('http://localhost:8080/api/patients');
+      const response = await axios.get('http://bloodlink-rwls.onrender.com/api/patients');
       setPatients(response.data);
     } catch (error) {
       console.error('Error fetching patients:', error);

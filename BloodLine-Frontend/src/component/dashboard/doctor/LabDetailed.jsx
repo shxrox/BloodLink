@@ -15,7 +15,7 @@ const Labdetails = () => {
 
   const fetchLabReports = async () => {
     try {
-      const res = await fetch("http://localhost:8080/api/labreports/all");
+      const res = await fetch("http://bloodlink-rwls.onrender.com/api/labreports/all");
       const data = await res.json();
       setLabReports(data);
     } catch (error) {
