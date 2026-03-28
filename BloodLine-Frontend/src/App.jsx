@@ -20,16 +20,15 @@ import ManagementNurse from './component/dashboard/nurse/AccountManagement';
 import AboutD from './component/dashboard/doctor/About';
 import AboutL from './component/dashboard/lab/About';
 import AboutN from './component/dashboard/nurse/About';
-import Nurse from './Component/Dashboard/Nurse/Nurse';
+// Fixed the line below to match the lowercase folder structure on GitHub
+import Nurse from './component/dashboard/nurse/Nurse'; 
 
 function App() {
   return (
     <Routes>
-
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<LoginForm />} />
       <Route path="/registration" element={<RegistrationForm />} />
-
 
       <Route path="/dashboard/nurse" element={<Nurse />} />
       <Route path="/dashboard/nurse/patient-register" element={<Patientregister />} />
@@ -39,7 +38,6 @@ function App() {
       <Route path="/dashboard/nurse/staff" element={<ManagementNurse />} />
       <Route path="/dashboard/nurse/about" element={<AboutN />} />
 
-
       <Route path="/dashboard/doctor" element={<Doctor />} />
       <Route path="/dashboard/doctor/patient-details" element={<Patientdetails />} />
       <Route path="/dashboard/doctor/petient-cheking" element={<Patientcheking />} />
@@ -48,18 +46,13 @@ function App() {
       <Route path="/dashboard/doctor/staff" element={<ManagementDoc />} />
       <Route path="/dashboard/doctor/about" element={<AboutD />} />
 
-
       <Route path="/dashboard/lab" element={<Lab />} />
       <Route path="/dashboard/lab/lab-details" element={<LabInfo />} />
       <Route path="/dashboard/lab/lab-cheking" element={<Labdetails />} />
       <Route path="/dashboard/lab/staff" element={<ManagementLab />} />
       <Route path="/dashboard/lab/about" element={<AboutL />} />
-
     </Routes>
   );
 }
 
 export default App;
-
-
-
