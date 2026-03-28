@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../nurse/NurseNavbar";
 import Footer from '../../Footer';
 import "../../../style/NurseHome.css";
+import Nurse from './Component/Dashboard/Nurse/Nurse';
 
 import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,

@@ -1,7 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import RegistrationForm from './component/RegistrationForm';
 import LoginForm from './component/Login';
-import Nurse from './component/dashboard/Nurse/nurse';
 import Doctor from './component/dashboard/doctor/doctor';
 import Lab from './component/dashboard/lab/lab';
 import Patientregister from "./component/dashboard/nurse/Patientregister";
@@ -21,7 +20,7 @@ import ManagementNurse from './component/dashboard/nurse/AccountManagement';
 import AboutD from './component/dashboard/doctor/About';
 import AboutL from './component/dashboard/lab/About';
 import AboutN from './component/dashboard/nurse/About';
-
+import Nurse from './Component/Dashboard/Nurse/Nurse';
 
 function App() {
   return (
