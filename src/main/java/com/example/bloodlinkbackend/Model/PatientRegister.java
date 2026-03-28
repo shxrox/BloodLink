@@ -1,11 +1,9 @@
 package com.example.bloodlinkbackend.Model;
 
 import jakarta.persistence.*;
-
-
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "patient_register")
