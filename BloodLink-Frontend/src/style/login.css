@@ -1,0 +1,156 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to right, #e9ecef, #f8f9fa);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #343a40;
+}
+
+.login-container {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.login-title {
+  color: #c0392b;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  letter-spacing: -0.5px;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  position: relative;
+}
+
+.form-input {
+  width: calc(100% - 24px);
+  padding: 12px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  background-color: #f8f9fa;
+}
+
+.form-input::placeholder {
+  color: #868e96;
+}
+
+.form-input:focus {
+  border-color: #c0392b;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.2);
+  outline: none;
+  background-color: #fff;
+}
+
+.form-input.input-error {
+    border-color: #e74c3c;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.85rem;
+  margin-top: 5px;
+  text-align: left;
+  padding-left: 5px;
+}
+
+.api-error-message {
+  color: #e74c3c;
+  font-size: 0.95rem;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #ffebee;
+  border: 1px solid #ef9a9a;
+  border-radius: 5px;
+}
+
+.login-btn {
+  background-color: #c0392b;
+  color: white;
+  padding: 14px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  margin-top: 10px;
+  letter-spacing: 0.5px;
+}
+
+.login-btn:hover {
+  background-color: #a53023;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(192, 57, 43, 0.25);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.register-prompt {
+  margin-top: 30px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.register-link {
+  color: #c0392b;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.register-link:hover {
+  color: #a53023;
+  text-decoration: underline;
+}
+
+@media (max-width: 576px) {
+  .login-container {
+    padding: 30px 20px;
+    margin: 15px;
+    border-radius: 8px;
+  }
+
+  .login-title {
+    font-size: 2rem;
+    margin-bottom: 25px;
+  }
+
+  .form-input {
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+
+  .login-btn {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+
+  .error-message,
+  .api-error-message {
+    font-size: 0.8rem;
+  }
+
+  .register-prompt {
+    font-size: 0.9rem;
+  }
+}

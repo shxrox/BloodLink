@@ -1,0 +1,153 @@
+.lab-details-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #343a40;
+}
+
+.lab-details-container {
+  flex-grow: 1;
+  width: 100%;
+  margin: 0;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.section-title {
+  text-align: center;
+  color: #c0392b; /* Consistent red tone */
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e9ecef;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 40px; /* Space between tables */
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  max-width: 1200px; /* Limits table width for readability on very wide screens */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lab-reports-table {
+  width: 100%;
+  min-width: 800px; /* Minimum width to enable horizontal scroll */
+  border-collapse: collapse;
+}
+
+.lab-reports-table thead {
+  background-color: #f0f2f5;
+}
+
+.lab-reports-table th,
+.lab-reports-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e9ecef;
+  white-space: nowrap; /* Prevents text from wrapping in cells */
+}
+
+.lab-reports-table th {
+  color: #495057;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.lab-reports-table tbody tr:nth-child(even) {
+  background-color: #fcfcfc;
+}
+
+.lab-reports-table tbody tr:hover {
+  background-color: #eef2f5;
+  transition: background-color 0.2s ease;
+}
+
+.lab-reports-table td {
+  color: #343a40;
+  font-size: 0.95rem;
+}
+
+.no-reports-message {
+  text-align: center;
+  padding: 20px;
+  color: #6c757d;
+  font-style: italic;
+}
+
+@media (max-width: 992px) {
+  .lab-details-container {
+    padding: 15px;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+  }
+
+  .table-wrapper {
+    margin-bottom: 30px;
+  }
+
+  .lab-reports-table {
+    min-width: 600px;
+  }
+
+  .lab-reports-table th,
+  .lab-reports-table td {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .lab-details-container {
+    padding: 10px;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+  }
+
+  .lab-reports-table {
+    min-width: 450px;
+  }
+
+  .lab-reports-table th,
+  .lab-reports-table td {
+    padding: 8px 10px;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .lab-details-container {
+    padding: 5px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+  }
+
+  .lab-reports-table {
+    min-width: 350px;
+  }
+
+  .lab-reports-table th,
+  .lab-reports-table td {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+  }
+}

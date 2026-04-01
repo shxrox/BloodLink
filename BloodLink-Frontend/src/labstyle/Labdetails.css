@@ -1,0 +1,268 @@
+.lab-details-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #343a40;
+}
+
+.lab-details-container {
+  flex-grow: 1;
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.main-title {
+  color: #c0392b;
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e9ecef;
+  text-align: center;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+}
+
+.lab-reports-table {
+  width: 100%;
+  min-width: 900px;
+  border-collapse: collapse;
+}
+
+.table-header {
+  background-color: #f0f2f5;
+}
+
+.lab-reports-table th,
+.lab-reports-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e9ecef;
+  white-space: nowrap;
+}
+
+.lab-reports-table th {
+  color: #495057;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.lab-reports-table tbody tr:nth-child(even) {
+  background-color: #fcfcfc;
+}
+
+.lab-reports-table tbody tr:hover {
+  background-color: #eef2f5;
+  transition: background-color 0.2s ease;
+}
+
+.lab-reports-table td {
+  color: #343a40;
+  font-size: 1rem;
+}
+
+.no-reports-message {
+  text-align: center;
+  padding: 20px;
+  color: #6c757d;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+.action-cell {
+  text-align: center;
+  width: 80px;
+}
+
+.action-button {
+  background-color: #c58686;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.action-button:hover {
+  background-color: #882121;
+  transform: scale(1.1);
+}
+
+.add-report-row td {
+  background-color: #f2f4f6;
+  padding: 20px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.add-report-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.form-input,
+.form-textarea {
+  border: 1px solid #ced4da;
+  padding: 10px 12px;
+  border-radius: 5px;
+  font-size: 1rem;
+  color: #343a40;
+  background-color: #ffffff;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #c0392b;
+  box-shadow: 0 0 0 0.2rem rgba(192, 57, 43, 0.25);
+  outline: none;
+}
+
+.form-textarea {
+  grid-column: 1 / -1; 
+  resize: vertical;
+}
+
+.submit-button {
+  background-color: #0a7a00;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  align-self: flex-end;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.submit-button:hover {
+  background-color: #b30000;
+  transform: translateY(-1px);
+}
+
+.detailed-report-row td {
+  background-color: #e9f5ff;
+  padding: 15px 25px;
+  border-bottom: 1px solid #cce5ff;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.detailed-report-content strong {
+  color: #b30000;
+}
+
+@media (max-width: 992px) {
+  .lab-details-container {
+    padding: 20px;
+    margin: 15px auto;
+  }
+
+  .main-title {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+  }
+
+  .lab-reports-table {
+    min-width: 700px;
+  }
+}
+
+@media (max-width: 768px) {
+  .lab-details-container {
+    padding: 15px;
+    margin: 15px auto;
+  }
+
+  .main-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  .lab-reports-table {
+    min-width: 600px;
+  }
+
+  .lab-reports-table th,
+  .lab-reports-table td {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .no-reports-message {
+    font-size: 1rem;
+    padding: 15px;
+  }
+
+  .add-report-form-cell {
+    padding: 15px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .submit-button {
+    width: 100%;
+    align-self: stretch;
+  }
+}
+
+@media (max-width: 576px) {
+  .lab-details-container {
+    padding: 10px;
+    margin: 10px auto;
+  }
+
+  .main-title {
+    font-size: 1.8rem;
+  }
+
+  .lab-reports-table {
+    min-width: 450px;
+  }
+
+  .lab-reports-table th,
+  .lab-reports-table td {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+
+  .action-button {
+    width: 25px;
+    height: 25px;
+    font-size: 1rem;
+  }
+
+  .form-input,
+  .form-textarea {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+}
